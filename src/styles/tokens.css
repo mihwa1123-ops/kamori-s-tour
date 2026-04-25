@@ -1,0 +1,136 @@
+/* =====================================================
+   kamori's tour — Design System Tokens
+   -----------------------------------------------------
+   Source of truth:
+     docs/color-system.md       (§7 CSS 변수 세트, §5.2 카테고리 세부)
+     docs/font-system.md        (§3.2 웨이트, §2 폰트 패밀리)
+     docs/layout-system.md      (§3 브레이크포인트, §4.5 간격, §10 z-index)
+     docs/component-catalog.md  (컴포넌트에서 소비)
+   ----------------------------------------------------------
+   Components MUST use these variables — do NOT hardcode
+   colors, font weights, spacings, or z-index values.
+   ===================================================== */
+
+:root {
+  /* ========== Foundation · Neutrals ========== */
+  --white:        #FFFFFF;
+  --off-white:    #FAFAFA;
+  --silver-veil:  #F3F0F8;
+  --ink:          #1A1A2E;
+  --slate:        #555566;
+
+  /* ========== Primary · Lavender ========== */
+  --lav-50:   #EDEAFC;
+  --lav-100:  #D4CBF7;
+  --lav-200:  #C2B5F5;
+  --lav-500:  #A594F9;  /* 메인 */
+  --lav-600:  #8170D8;
+  --lav-800:  #4A3A8C;
+
+  /* ========== Secondary · Baby Pink ========== */
+  --pink-50:   #FFF0F4;
+  --pink-100:  #FFD6E0;
+  --pink-500:  #FFB3C6;  /* 메인 */
+  --pink-600:  #F08BA6;
+  --pink-800:  #A8456B;
+  --pink-900:  #5A1F36;
+
+  /* ========== Accent · Butter Yellow ========== */
+  --yel-50:   #FFF9D1;
+  --yel-100:  #FFF0A0;
+  --yel-500:  #FFE663;  /* 메인 */
+  --yel-600:  #D4B80F;
+  --yel-800:  #6B5500;
+  --yel-900:  #4A3B00;
+
+  /* ========== Semantic · Categories (short) ========== */
+  --cat-heritage: var(--lav-500);
+  --cat-market:   var(--pink-500);
+  --cat-food:     var(--yel-500);
+  --cat-story:    var(--lav-100);
+  --cat-alleys:   var(--pink-100);
+  --cat-nature:   var(--yel-500);
+
+  /* ========== Semantic · Categories (detailed · color-system §5.2) ========== */
+  --cat-heritage-bg:       var(--lav-500);
+  --cat-heritage-fg:       var(--ink);
+  --cat-heritage-tint-bg:  var(--lav-50);
+  --cat-heritage-tint-fg:  var(--lav-800);
+
+  --cat-market-bg:         var(--pink-500);
+  --cat-market-fg:         var(--ink);
+  --cat-market-tint-bg:    var(--pink-50);
+  --cat-market-tint-fg:    var(--pink-800);
+
+  --cat-food-bg:           var(--yel-500);
+  --cat-food-fg:           var(--ink);
+  --cat-food-tint-bg:      var(--yel-50);
+  --cat-food-tint-fg:      var(--yel-800);
+
+  --cat-story-bg:          var(--lav-100);
+  --cat-story-fg:          var(--lav-800);
+  --cat-story-border:      var(--lav-500);
+
+  --cat-alleys-bg:         var(--pink-100);
+  --cat-alleys-fg:         var(--pink-800);
+  --cat-alleys-border:     var(--pink-500);
+
+  --cat-nature-bg:         var(--yel-500);
+  --cat-nature-fg:         var(--ink);
+  --cat-nature-accent:     var(--lav-500);
+
+  /* ========== Semantic · UI States ========== */
+  --color-bg-page:        var(--off-white);
+  --color-bg-surface:     var(--white);
+  --color-bg-subtle:      var(--silver-veil);
+  --color-bg-brand:       var(--lav-500);
+  --color-bg-brand-hover: var(--lav-600);
+
+  --color-text-primary:   var(--ink);
+  --color-text-secondary: var(--slate);
+  --color-text-brand:     var(--lav-600);
+  --color-text-on-brand:  var(--ink);   /* 파스텔 배경 위 텍스트 */
+  --color-text-on-dark:   var(--white); /* Ink 배경 위 텍스트 */
+
+  --color-border-subtle:  #E8E8F0;
+  --color-border-brand:   var(--lav-500);
+
+  /* ========== Typography · Font Families ========== */
+  --font-sans:  'IBM Plex Sans', sans-serif;
+  --font-serif: 'Fraunces', serif;
+
+  /* ========== Typography · Font Weights (font-system §3.2) ========== */
+  --fw-meta:  300;  /* Light  — 메타 정보 */
+  --fw-body:  400;  /* Regular — 본문 */
+  --fw-ui:    500;  /* Medium — UI · 버튼 · 태그 */
+  --fw-title: 700;  /* Bold   — 제목 */
+  --fw-hero:  900;  /* Black  — 히어로 */
+
+  /* ========== Layout · Breakpoints (layout-system §3) ========== */
+  --bp-tablet:  768px;
+  --bp-desktop: 1024px;
+  --bp-large:   1440px;
+
+  /* ========== Layout · Spacing · 8pt (layout-system §4.5) ========== */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ========== Layout · Z-Index (layout-system §10) ========== */
+  --z-base:     0;
+  --z-blob:     2;
+  --z-dropdown: 10;
+  --z-sticky:   100;
+  --z-header:   100;
+  --z-overlay:  200;
+  --z-modal:    300;
+  --z-toast:    400;
+  --z-tooltip:  500;
+}

@@ -1,0 +1,11 @@
+node_modules
+dist
+dist-ssr
+storybook-static
+*.local
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+.idea
+*.log
+npm-debug.log*

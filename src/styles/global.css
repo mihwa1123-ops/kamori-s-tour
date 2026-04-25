@@ -1,0 +1,150 @@
+/* =====================================================
+   kamori's tour — Global Styles
+   -----------------------------------------------------
+   Source of truth:
+     docs/font-system.md     (§7 html[lang] 폰트 자동 분기, §2 fallback 체인)
+     docs/color-system.md    (페이지 기본 배경·텍스트)
+     docs/layout-system.md   (§12.1 prefers-reduced-motion)
+   ===================================================== */
+
+/* ----- Modern CSS Reset (minimal) ----- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1, h2, h3, h4, h5, h6,
+p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-weight: var(--fw-body);
+  font-size: 16px;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ----- html[lang] 기반 폰트 자동 분기 (font-system §7) -----
+   React 가 <html lang="xx"> 를 동적으로 갱신하면 아래 셀렉터가
+   자동으로 매칭되어 언어별 폰트가 적용된다. 각 컴포넌트는 폰트를
+   지정할 필요가 없다. fallback 체인은 font-system §7.2 기준. */
+
+/* 기본 · 영어 */
+html[lang="en"] {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3 {
+  font-family: 'Fraunces', serif;
+}
+
+/* 스페인어 — 영어와 동일 페어 */
+html[lang="es"] {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+html[lang="es"] h1,
+html[lang="es"] h2,
+html[lang="es"] h3 {
+  font-family: 'Fraunces', serif;
+}
+
+/* 일본어 · Zen Maru Gothic */
+html[lang="ja"] {
+  font-family:
+    'Zen Maru Gothic',
+    'Hiragino Maru Gothic Pro',
+    'Yu Gothic',
+    sans-serif;
+}
+html[lang="ja"] h1,
+html[lang="ja"] h2,
+html[lang="ja"] h3 {
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+/* 한국어 · Gowun 페어 */
+html[lang="ko"] {
+  font-family:
+    'Gowun Dodum',
+    'Apple SD Gothic Neo',
+    'Malgun Gothic',
+    sans-serif;
+}
+html[lang="ko"] h1,
+html[lang="ko"] h2,
+html[lang="ko"] h3 {
+  font-family: 'Gowun Batang', serif;
+}
+
+/* 중국어 간체 · Noto Sans SC */
+html[lang="zh"],
+html[lang="zh-CN"] {
+  font-family:
+    'Noto Sans SC',
+    'PingFang SC',
+    'Microsoft YaHei',
+    sans-serif;
+}
+html[lang="zh"] h1,
+html[lang="zh"] h2,
+html[lang="zh"] h3,
+html[lang="zh-CN"] h1,
+html[lang="zh-CN"] h2,
+html[lang="zh-CN"] h3 {
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* ----- Accessibility · prefers-reduced-motion ----- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
