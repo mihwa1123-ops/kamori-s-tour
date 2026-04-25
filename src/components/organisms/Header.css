@@ -1,0 +1,83 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+/* ----- Variants ----- */
+.header--transparent {
+  background: transparent;
+}
+.header--solid {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--color-border-subtle);
+}
+
+/* ----- Inner container (layout-system §4.2 통합) ----- */
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1360px;
+}
+
+@media (min-width: 768px) {
+  .header__inner {
+    padding: 0 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .header__inner {
+    padding: 0 40px;
+  }
+}
+
+/* ----- Logo ----- */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: var(--fw-ui);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* ----- Nav (PC only) ----- */
+.header__nav {
+  display: none;
+  gap: var(--space-6);
+}
+
+.header__nav a {
+  color: var(--slate);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header__nav a:hover {
+  color: var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .header__nav {
+    display: flex;
+  }
+}
+
+/* ----- Mobile height ----- */
+@media (max-width: 1023px) {
+  .header {
+    height: 56px;
+  }
+}

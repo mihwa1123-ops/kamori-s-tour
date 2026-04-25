@@ -1,0 +1,82 @@
+.field-note {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  min-height: 480px;
+}
+
+.field-note__label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--yel-500);
+  font-weight: var(--fw-ui);
+  text-transform: uppercase;
+}
+
+.field-note__quote {
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 3vw, 28px);
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--white);
+  letter-spacing: -0.2px;
+  margin: 0;
+  flex: 1;
+}
+
+.field-note__quote em {
+  color: var(--yel-500);
+  font-weight: var(--fw-ui);
+  font-style: normal;
+}
+
+/* CJK 4개 (ja/ko/zh/zh-CN) 자동 이탤릭 해제 */
+html[lang="ja"] .field-note__quote,
+html[lang="ko"] .field-note__quote,
+html[lang="zh"] .field-note__quote,
+html[lang="zh-CN"] .field-note__quote {
+  font-style: normal;
+}
+
+.field-note__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+  gap: var(--space-3);
+}
+
+.field-note__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.field-note__name {
+  font-size: 13px;
+  font-weight: var(--fw-ui);
+  color: var(--white);
+}
+
+.field-note__role {
+  font-size: 11px;
+  font-weight: var(--fw-meta);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.field-note__cta {
+  background: transparent;
+  border: none;
+  color: var(--lav-500);
+  font-size: 14px;
+  font-weight: var(--fw-ui);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 16px;
+  transition: background 0.2s, color 0.2s;
+}
+.field-note__cta:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}

@@ -1,0 +1,54 @@
+.bottom-sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  background: var(--white);
+  border-radius: 24px 24px 0 0;
+  box-shadow: var(--shadow-up);
+  transition: height 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  height: 45vh;
+  overflow: hidden;
+}
+
+.bottom-sheet.is-expanded {
+  height: 85vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bottom-sheet {
+    transition: none;
+  }
+}
+
+.bottom-sheet__handle {
+  width: 100%;
+  padding: 12px 0 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  min-height: 32px;
+}
+
+.bottom-sheet__grip {
+  width: 40px;
+  height: 4px;
+  background: var(--silver-veil);
+  border-radius: 2px;
+}
+
+.bottom-sheet__content {
+  padding: 0 var(--space-5) var(--space-6);
+  overflow-y: auto;
+  height: calc(100% - 32px);
+}
+
+/* PC 에서는 자동 숨김 */
+@media (min-width: 1024px) {
+  .bottom-sheet {
+    display: none;
+  }
+}

@@ -1,0 +1,70 @@
+.spot-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  cursor: pointer;
+}
+
+.spot-card[role='button']:focus-visible {
+  outline: 2px solid var(--lav-500);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.spot-card__visual {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.spot-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 11px;
+  color: var(--slate);
+  letter-spacing: 1px;
+}
+
+.spot-card__category {
+  text-transform: uppercase;
+  font-weight: var(--fw-ui);
+}
+
+.spot-card__title {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  font-weight: var(--fw-title);
+  color: var(--ink);
+  letter-spacing: -0.4px;
+  margin: 6px 0 4px;
+}
+
+.spot-card__desc {
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ----- Compact variant — 모바일 가로 ----- */
+.spot-card--compact {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.spot-card--compact .spot-card__visual {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.spot-card--compact .spot-card__title {
+  font-size: 16px;
+  margin: 4px 0 2px;
+}
+
+.spot-card--compact .spot-card__desc {
+  font-size: 12px;
+  line-height: 1.5;
+}

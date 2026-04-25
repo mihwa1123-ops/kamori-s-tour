@@ -137,4 +137,5 @@
   /* ========== Shadows (--ink alpha 변형) ========== */
   --shadow-sm: 0 8px 24px rgba(26, 26, 46, 0.08);  /* Card hover */
   --shadow-md: 0 8px 24px rgba(26, 26, 46, 0.12);  /* Dropdown menu */
+  --shadow-up: 0 -4px 20px rgba(26, 26, 46, 0.10); /* BottomSheet 위쪽 그림자 */
 }

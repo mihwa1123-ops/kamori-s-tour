@@ -1,0 +1,82 @@
+.route-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ----- Horizontal — PC ----- */
+.route-timeline--horizontal {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.route-timeline--horizontal .route-timeline__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ----- Vertical — 모바일 / 사이드바 ----- */
+.route-timeline--vertical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.route-timeline--vertical .route-timeline__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+/* ----- Connector ----- */
+.route-timeline__connector {
+  font-size: 10px;
+  color: var(--slate);
+  font-style: italic;
+  font-family: var(--font-serif);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ----- Spot button ----- */
+.route-timeline__spot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: 12px;
+  transition: background 0.15s;
+  text-align: left;
+  font-family: inherit;
+}
+.route-timeline__spot:hover {
+  background: var(--silver-veil);
+}
+.route-timeline__spot:focus-visible {
+  outline: 2px solid var(--lav-500);
+  outline-offset: 2px;
+}
+
+.route-timeline__info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.route-timeline__name {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.route-timeline__item.is-current .route-timeline__name {
+  font-weight: var(--fw-title);
+  color: var(--lav-800);
+}
