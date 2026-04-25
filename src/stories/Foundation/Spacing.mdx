@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Spacing" />
+
+# Spacing System
+
+8pt 그리드 기반 10단계 간격.  
+출처: [`docs/layout-system.md`](../../docs/layout-system.md) §4.5.
+
+---
+
+## 8pt Scale
+
+각 막대의 길이가 실제 픽셀값.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginBlock: 16 }}>
+  {[
+    { token: '--space-1',  px: 4 },
+    { token: '--space-2',  px: 8 },
+    { token: '--space-3',  px: 12 },
+    { token: '--space-4',  px: 16 },
+    { token: '--space-5',  px: 24 },
+    { token: '--space-6',  px: 32 },
+    { token: '--space-7',  px: 48 },
+    { token: '--space-8',  px: 64 },
+    { token: '--space-9',  px: 96 },
+    { token: '--space-10', px: 128 },
+  ].map(s => (
+    <div key={s.token} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+      <div style={{ width: 100, fontSize: 11, fontFamily: 'monospace', color: '#1A1A2E' }}>
+        {s.token}
+      </div>
+      <div style={{
+        width: s.px,
+        height: 24,
+        background: '#A594F9',
+        borderRadius: 4,
+      }} />
+      <div style={{ fontSize: 12, color: '#555566' }}>{s.px}px</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## 권장 사용처
+
+| 용도 | 토큰 | 픽셀 |
+|------|-----|------|
+| 미세 간격 (아이콘, 라벨 안) | `--space-1` ~ `--space-2` | 4-8px |
+| 카드 안 컴포넌트 간 | `--space-3` ~ `--space-4` | 12-16px |
+| 섹션 안 묶음 간 | `--space-5` ~ `--space-6` | 24-32px |
+| 모바일 섹션 간 | `--space-7` | 48px |
+| 태블릿 섹션 간 | `--space-8` | 64px |
+| PC 섹션 간 | `--space-9` | 96px |
+| PC Anti-Grid 섹션 | `--space-10` | 128px |
+
+---
+
+## 섹션 간격 시뮬레이션
+
+<div style={{
+  background: '#FAFAFA',
+  padding: 16,
+  borderRadius: 16,
+  marginBlock: 16,
+}}>
+  <div style={{ background: '#FFB3C6', padding: 16, borderRadius: 8, color: '#1A1A2E', fontSize: 12 }}>
+    Section 1
+  </div>
+  <div style={{ height: 48, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555566', fontSize: 11, fontStyle: 'italic' }}>
+    ↕ Mobile · 48px (--space-7)
+  </div>
+  <div style={{ background: '#A594F9', padding: 16, borderRadius: 8, color: '#1A1A2E', fontSize: 12 }}>
+    Section 2
+  </div>
+  <div style={{ height: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555566', fontSize: 11, fontStyle: 'italic' }}>
+    ↕ Tablet · 64px (--space-8)
+  </div>
+  <div style={{ background: '#FFE663', padding: 16, borderRadius: 8, color: '#1A1A2E', fontSize: 12 }}>
+    Section 3
+  </div>
+  <div style={{ height: 96, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#555566', fontSize: 11, fontStyle: 'italic' }}>
+    ↕ PC · 96px (--space-9)
+  </div>
+  <div style={{ background: '#1A1A2E', padding: 16, borderRadius: 8, color: '#FFFFFF', fontSize: 12 }}>
+    Section 4
+  </div>
+</div>
+
+---
+
+## Breakpoints
+
+| 토큰 | 픽셀 | 의미 |
+|------|------|------|
+| `--bp-tablet` | 768px | iPad Mini 세로 폭 |
+| `--bp-desktop` | 1024px | 노트북 최소 실사용 폭 |
+| `--bp-large` | 1440px | 13-15인치 노트북 |
+
+---
+
+## Container Widths
+
+| 분기점 | max-width | padding |
+|--------|-----------|---------|
+| Mobile (default) | 100% | 20px |
+| Tablet (768+) | 768px | 32px |
+| Desktop (1024+) | 1200px | 40px |
+| Large (1440+) | 1360px | 40px |

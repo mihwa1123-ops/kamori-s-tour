@@ -1,0 +1,190 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { BlobMask } from '../../components/molecules/BlobMask';
+
+<Meta title="Foundation/Shapes" />
+
+# Blob Shapes
+
+디자인 시스템의 시각 시그니처 — 카테고리별 유기적 블롭 마스크 3종.  
+출처: [`docs/layout-system.md`](../../docs/layout-system.md) §2.
+
+---
+
+## 3가지 쉐이프 (실제 BlobMask 컴포넌트)
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  gap: 32,
+  marginBlock: 24,
+  maxWidth: 800,
+}}>
+  <div>
+    <div style={{ width: '100%', aspectRatio: '1' }}>
+      <BlobMask
+        shape="heritage"
+        src="https://placehold.co/600x600/A594F9/1A1A2E?text=Heritage"
+        alt="Heritage shape — 두 지붕"
+      />
+    </div>
+    <div style={{ marginTop: 16 }}>
+      <div style={{ fontFamily: 'Fraunces, serif', fontSize: 18, fontWeight: 700 }}>Heritage</div>
+      <div style={{ fontSize: 11, color: '#555566', marginTop: 4 }}>
+        윗부분 둥근 사각형 + 아래 두 반원<br />
+        → 나란한 두 지붕
+      </div>
+      <div style={{ fontSize: 11, fontFamily: 'monospace', color: '#8170D8', marginTop: 6 }}>
+        rotate(-2°)
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style={{ width: '100%', aspectRatio: '1' }}>
+      <BlobMask
+        shape="market"
+        src="https://placehold.co/600x600/FFB3C6/1A1A2E?text=Market"
+        alt="Market shape — 좌판 파도"
+      />
+    </div>
+    <div style={{ marginTop: 16 }}>
+      <div style={{ fontFamily: 'Fraunces, serif', fontSize: 18, fontWeight: 700 }}>Market</div>
+      <div style={{ fontSize: 11, color: '#555566', marginTop: 4 }}>
+        아래 4개 반원 파도<br />
+        → 늘어선 좌판
+      </div>
+      <div style={{ fontSize: 11, fontFamily: 'monospace', color: '#F08BA6', marginTop: 6 }}>
+        rotate(1.5°)
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style={{ width: '100%', aspectRatio: '1' }}>
+      <BlobMask
+        shape="nature"
+        src="https://placehold.co/600x600/FFE663/1A1A2E?text=Nature"
+        alt="Nature shape — 산 능선"
+      />
+    </div>
+    <div style={{ marginTop: 16 }}>
+      <div style={{ fontFamily: 'Fraunces, serif', fontSize: 18, fontWeight: 700 }}>Nature</div>
+      <div style={{ fontSize: 11, color: '#555566', marginTop: 4 }}>
+        좌우 비대칭 유기체<br />
+        → 굽은 산 능선
+      </div>
+      <div style={{ fontSize: 11, fontFamily: 'monospace', color: '#D4B80F', marginTop: 6 }}>
+        rotate(-1°)
+      </div>
+    </div>
+  </div>
+</div>
+
+---
+
+## 카테고리 ↔ 쉐이프 고정 매핑
+
+**절대 바꾸지 말 것** — 디자인 시그니처의 일관성.
+
+| 카테고리 | 쉐이프 | Placeholder 컬러 | 회전 |
+|---------|-------|-----------------|-----|
+| Heritage (건축·역사) | `heritage` | `--lav-100` | -2° |
+| Market (시장) | `market` | `--pink-100` | 1.5° |
+| Nature (자연) | `nature` | `--yel-100` | -1° |
+
+> Food / Story / Alleys 카테고리는 블롭 마스크를 사용하지 않음 (한 페이지에 너무 많은 블롭은 시각 피로).
+
+---
+
+## SVG Path Data
+
+모든 쉐이프는 `viewBox="0 0 170 170"` 정사각형 좌표계.
+
+```svg
+<!-- Heritage -->
+<path d="M127.5 0C150.972 0 170 19.0279 170 42.5V127.5..." />
+
+<!-- Market -->
+<path d="M127.5 0C150.972 6.4426e-07 170 19.0279 170 42.5V141.667..." />
+
+<!-- Nature -->
+<path d="M44.9209 0C61.141 1.41801e-06 75.1064 9.65447 81.3838 23.5303..." />
+```
+
+전체 path 데이터는 [`src/components/molecules/BlobMask.tsx`](../../components/molecules/BlobMask.tsx) 의 `SHAPES` 객체 참조.
+
+---
+
+## ✓ DO
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBlock: 16 }}>
+  <div style={{ padding: 16, background: '#EDEAFC', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#4A3A8C', fontWeight: 700, marginBottom: 8 }}>
+      ✓ 카테고리 ↔ 쉐이프 1:1
+    </div>
+    <div style={{ fontSize: 12, color: '#4A3A8C', lineHeight: 1.5 }}>
+      Heritage 카테고리는 항상 heritage 쉐이프. 마음대로 바꾸지 말 것.
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#EDEAFC', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#4A3A8C', fontWeight: 700, marginBottom: 8 }}>
+      ✓ 1~3° 미세 회전
+    </div>
+    <div style={{ fontSize: 12, color: '#4A3A8C', lineHeight: 1.5 }}>
+      살아있는 손맛. 카테고리별 다른 각도로 일관성 + 자연스러움.
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#EDEAFC', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#4A3A8C', fontWeight: 700, marginBottom: 8 }}>
+      ✓ 이미지 로드 전 placeholder
+    </div>
+    <div style={{ fontSize: 12, color: '#4A3A8C', lineHeight: 1.5 }}>
+      카테고리 100번대 컬러로 블롭 모양 placeholder. 빈 사각형 ❌.
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#EDEAFC', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#4A3A8C', fontWeight: 700, marginBottom: 8 }}>
+      ✓ prefers-reduced-motion 대응
+    </div>
+    <div style={{ fontSize: 12, color: '#4A3A8C', lineHeight: 1.5 }}>
+      모션 줄이기 ON 이면 회전 자동 해제 (멀미 방지).
+    </div>
+  </div>
+</div>
+
+---
+
+## ✗ DON'T
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBlock: 16 }}>
+  <div style={{ padding: 16, background: '#FFD6E0', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#5A1F36', fontWeight: 700, marginBottom: 8 }}>
+      ✗ 무작위로 쉐이프 바꾸기
+    </div>
+    <div style={{ fontSize: 12, color: '#5A1F36', lineHeight: 1.5 }}>
+      Heritage 에 market 쉐이프 = 일관성 붕괴.
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#FFD6E0', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#5A1F36', fontWeight: 700, marginBottom: 8 }}>
+      ✗ 그림자 / 테두리 추가
+    </div>
+    <div style={{ fontSize: 12, color: '#5A1F36', lineHeight: 1.5 }}>
+      쉐이프 자체가 충분히 강한 형태. 추가 장식 불필요.
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#FFD6E0', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#5A1F36', fontWeight: 700, marginBottom: 8 }}>
+      ✗ 5° 이상 회전
+    </div>
+    <div style={{ fontSize: 12, color: '#5A1F36', lineHeight: 1.5 }}>
+      가독성 저하 + "기울어진 사진" 느낌. 1~3° 가 황금비.
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#FFD6E0', borderRadius: 12 }}>
+    <div style={{ fontSize: 12, color: '#5A1F36', fontWeight: 700, marginBottom: 8 }}>
+      ✗ 같은 카테고리 3개 이상 반복
+    </div>
+    <div style={{ fontSize: 12, color: '#5A1F36', lineHeight: 1.5 }}>
+      한 페이지에 같은 카테고리 블롭 3개 이상 = 시각 피로.
+    </div>
+  </div>
+</div>

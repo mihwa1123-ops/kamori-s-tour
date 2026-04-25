@@ -1,0 +1,193 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Colors" />
+
+# Color System
+
+3색 시스템 (Lavender · Pink · Yellow) + Foundation 5색.  
+출처: [`docs/color-system.md`](../../docs/color-system.md) §2~7. WCAG 2.1 AA 검증 완료 (24/29 조합 통과).
+
+---
+
+## Foundation · Neutrals
+
+페이지의 60% 면적을 차지하는 중립색.
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(5, 1fr)',
+  gap: 12,
+  marginBlock: 16,
+}}>
+  {[
+    { token: '--white',       hex: '#FFFFFF', desc: '카드 배경, 기본 표면' },
+    { token: '--off-white',   hex: '#FAFAFA', desc: '페이지 배경' },
+    { token: '--silver-veil', hex: '#F3F0F8', desc: '섹션 구분 (라벤더 톤)' },
+    { token: '--ink',         hex: '#1A1A2E', desc: '주 텍스트 (보라 톤 검정)' },
+    { token: '--slate',       hex: '#555566', desc: '부 텍스트, 메타' },
+  ].map(c => (
+    <div key={c.token}>
+      <div style={{
+        aspectRatio: '1',
+        background: c.hex,
+        borderRadius: 12,
+        border: c.hex === '#FFFFFF' ? '0.5px solid #E8E8F0' : 'none',
+      }} />
+      <div style={{ marginTop: 8, fontSize: 11, fontFamily: 'monospace' }}>{c.token}</div>
+      <div style={{ fontSize: 10, color: '#888' }}>{c.hex}</div>
+      <div style={{ fontSize: 10, color: '#555566', marginTop: 2 }}>{c.desc}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Primary · Lavender (60%)
+
+브랜드 주색. 한복 옥색 · 일본 후지이로 · 중국 우허색의 정서.
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(6, 1fr)',
+  gap: 12,
+  marginBlock: 16,
+}}>
+  {[
+    { token: '--lav-50',  hex: '#EDEAFC', use: '카드 배경' },
+    { token: '--lav-100', hex: '#D4CBF7', use: '뱃지 배경' },
+    { token: '--lav-200', hex: '#C2B5F5', use: '보더, 호버' },
+    { token: '--lav-500', hex: '#A594F9', use: '메인 · CTA · 로고', main: true },
+    { token: '--lav-600', hex: '#8170D8', use: '버튼 호버' },
+    { token: '--lav-800', hex: '#4A3A8C', use: '텍스트 (라벤더 위)' },
+  ].map(c => (
+    <div key={c.token}>
+      <div style={{
+        aspectRatio: '1',
+        background: c.hex,
+        borderRadius: 12,
+        border: c.main ? '2px solid #1A1A2E' : 'none',
+      }} />
+      <div style={{ marginTop: 8, fontSize: 11, fontFamily: 'monospace' }}>{c.token}</div>
+      <div style={{ fontSize: 10, color: '#888' }}>{c.hex}</div>
+      <div style={{ fontSize: 10, color: '#555566', marginTop: 2 }}>{c.use}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Secondary · Baby Pink (30%)
+
+봄 벚꽃 · 매실꽃의 색. 친근함 · 환영.
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(6, 1fr)',
+  gap: 12,
+  marginBlock: 16,
+}}>
+  {[
+    { token: '--pink-50',  hex: '#FFF0F4', use: '섹션 배경' },
+    { token: '--pink-100', hex: '#FFD6E0', use: '뱃지 배경' },
+    { token: '--pink-500', hex: '#FFB3C6', use: 'Market 카테고리', main: true },
+    { token: '--pink-600', hex: '#F08BA6', use: '호버 상태' },
+    { token: '--pink-800', hex: '#A8456B', use: '텍스트 (핑크 위)' },
+    { token: '--pink-900', hex: '#5A1F36', use: '진한 핑크용 텍스트' },
+  ].map(c => (
+    <div key={c.token}>
+      <div style={{
+        aspectRatio: '1',
+        background: c.hex,
+        borderRadius: 12,
+        border: c.main ? '2px solid #1A1A2E' : 'none',
+      }} />
+      <div style={{ marginTop: 8, fontSize: 11, fontFamily: 'monospace' }}>{c.token}</div>
+      <div style={{ fontSize: 10, color: '#888' }}>{c.hex}</div>
+      <div style={{ fontSize: 10, color: '#555566', marginTop: 2 }}>{c.use}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Accent · Butter Yellow (10%)
+
+가장 아껴 쓰는 포인트. 시장 노점의 유자 · 잘 익은 밀의 색.
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(6, 1fr)',
+  gap: 12,
+  marginBlock: 16,
+}}>
+  {[
+    { token: '--yel-50',  hex: '#FFF9D1', use: '하이라이트' },
+    { token: '--yel-100', hex: '#FFF0A0', use: '뱃지 배경' },
+    { token: '--yel-500', hex: '#FFE663', use: 'Food 카테고리', main: true },
+    { token: '--yel-600', hex: '#D4B80F', use: '진한 노랑' },
+    { token: '--yel-800', hex: '#6B5500', use: '텍스트 (노랑 위)' },
+    { token: '--yel-900', hex: '#4A3B00', use: '가장 진한 버전' },
+  ].map(c => (
+    <div key={c.token}>
+      <div style={{
+        aspectRatio: '1',
+        background: c.hex,
+        borderRadius: 12,
+        border: c.main ? '2px solid #1A1A2E' : 'none',
+      }} />
+      <div style={{ marginTop: 8, fontSize: 11, fontFamily: 'monospace' }}>{c.token}</div>
+      <div style={{ fontSize: 10, color: '#888' }}>{c.hex}</div>
+      <div style={{ fontSize: 10, color: '#555566', marginTop: 2 }}>{c.use}</div>
+    </div>
+  ))}
+</div>
+
+---
+
+## 6 카테고리 매핑
+
+| 카테고리 | 표현 방식 | 주색 | 보조색 |
+|---------|---------|------|--------|
+| **Heritage** | Lavender Solid | `--lav-500` | — |
+| **Market** | Pink Solid | `--pink-500` | — |
+| **Food** | Yellow Solid | `--yel-500` | — |
+| **Story** | Lavender Tint | `--lav-100` | `--lav-500` 테두리 |
+| **Alleys** | Pink Tint | `--pink-100` | `--pink-500` 테두리 |
+| **Nature** | Yellow + Lavender Combo | `--yel-500` + `--lav-500` | 두 색 겹친 일러스트 |
+
+---
+
+## 🚨 Golden Rule
+
+<div style={{
+  background: '#1A1A2E',
+  color: '#FFFFFF',
+  padding: 24,
+  borderRadius: 16,
+  marginBlock: 16,
+  borderLeft: '4px solid #FFE663',
+}}>
+  <h3 style={{ marginTop: 0, color: '#FFE663' }}>파스텔 3색 배경에는 항상 Ink 텍스트.</h3>
+  <p style={{ margin: 0, lineHeight: 1.6 }}>
+    Lavender 500 위 흰 글자 = <strong style={{ color: '#FFB3C6' }}>2.56:1 (FAIL)</strong> · 
+    Lavender 500 위 Ink 글자 = <strong style={{ color: '#FFE663' }}>6.66:1 (AA ✓)</strong>
+  </p>
+  <p style={{ marginTop: 12, marginBottom: 0, fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+    예외: 600 이상 진한 버전 (`--lav-600`, `--lav-800`, `--ink`) 위에만 White 텍스트 허용.
+  </p>
+</div>
+
+---
+
+## WCAG 2.1 검증 결과 (29개 조합)
+
+| 등급 | 개수 | 비율 |
+|------|------|------|
+| AAA (본문) | 15 | 51.7% |
+| AA (본문) | 9 | 31.0% |
+| AA 큰글자만 | 2 | 6.9% |
+| **FAIL** | 3 | 10.3% |
+
+**본문 AA 이상 통과**: 24/29 = 82.8%
+
+상세 검증 표는 [`docs/color-system.md`](../../docs/color-system.md) §6 참조.

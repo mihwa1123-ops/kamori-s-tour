@@ -1,0 +1,154 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundation/Typography" />
+
+# Typography System
+
+5개 언어 폰트 매트릭스 + 의미 기반 웨이트 시스템.  
+출처: [`docs/font-system.md`](../../docs/font-system.md) §2~3.
+
+---
+
+## 5개 언어 헤드라인
+
+각 언어마다 폰트가 자동 적용 (`html[lang]` 셀렉터). 상단 툴바 🌐 Language 로 전환해 보세요.
+
+<div style={{
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 32,
+  marginBlock: 24,
+  padding: 24,
+  background: '#FAFAFA',
+  borderRadius: 16,
+}}>
+  <div>
+    <div style={{ fontSize: 11, color: '#555566', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      English · Fraunces (serif)
+    </div>
+    <div style={{ fontFamily: 'Fraunces, serif', fontSize: 44, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-1.5px', color: '#1A1A2E' }}>
+      A city of quiet corners.
+    </div>
+  </div>
+  <div>
+    <div style={{ fontSize: 11, color: '#555566', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      日本語 · Zen Maru Gothic
+    </div>
+    <div style={{ fontFamily: '"Zen Maru Gothic", sans-serif', fontSize: 36, fontWeight: 700, lineHeight: 1.2, color: '#1A1A2E' }}>
+      静かな路地の街、大田へ。
+    </div>
+  </div>
+  <div>
+    <div style={{ fontSize: 11, color: '#555566', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      한국어 · Gowun Batang (serif)
+    </div>
+    <div style={{ fontFamily: '"Gowun Batang", serif', fontSize: 40, fontWeight: 700, lineHeight: 1.2, color: '#1A1A2E' }}>
+      조용한 골목의 도시.
+    </div>
+  </div>
+  <div>
+    <div style={{ fontSize: 11, color: '#555566', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      Español · Fraunces (serif)
+    </div>
+    <div style={{ fontFamily: 'Fraunces, serif', fontSize: 38, fontWeight: 700, lineHeight: 1.05, letterSpacing: '-1.2px', color: '#1A1A2E' }}>
+      Una ciudad de rincones callados.
+    </div>
+  </div>
+  <div>
+    <div style={{ fontSize: 11, color: '#555566', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      中文 · Noto Sans SC
+    </div>
+    <div style={{ fontFamily: '"Noto Sans SC", sans-serif', fontSize: 44, fontWeight: 700, lineHeight: 1.2, color: '#1A1A2E' }}>
+      一座安静巷子的城市。
+    </div>
+  </div>
+</div>
+
+---
+
+## 폰트 매트릭스
+
+| 언어 | 헤드라인 | 본문 | 라이선스 |
+|------|---------|------|---------|
+| **English** | Fraunces | IBM Plex Sans | SIL OFL 1.1 |
+| **日本語** | Zen Maru Gothic | Zen Maru Gothic | SIL OFL 1.1 |
+| **한국어** | Gowun Batang | Gowun Dodum | SIL OFL 1.1 |
+| **Español** | Fraunces | IBM Plex Sans | SIL OFL 1.1 |
+| **中文 (简体)** | Noto Sans SC | Noto Sans SC | SIL OFL 1.1 |
+
+---
+
+## Zen Maru Gothic 5단계 웨이트
+
+일본어 메인 폰트의 시그니처 — 차갑지 않은 둥근 마루 고딕.
+
+<div style={{
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 16,
+  marginBlock: 16,
+  fontFamily: '"Zen Maru Gothic", sans-serif',
+}}>
+  <div style={{ fontSize: 28, fontWeight: 300, color: '#1A1A2E' }}>
+    Light 300 · 路地の街、大田
+  </div>
+  <div style={{ fontSize: 28, fontWeight: 400, color: '#1A1A2E' }}>
+    Regular 400 · 路地の街、大田
+  </div>
+  <div style={{ fontSize: 28, fontWeight: 500, color: '#1A1A2E' }}>
+    Medium 500 · 路地の街、大田
+  </div>
+  <div style={{ fontSize: 28, fontWeight: 700, color: '#1A1A2E' }}>
+    Bold 700 · 路地の街、大田
+  </div>
+  <div style={{ fontSize: 28, fontWeight: 900, color: '#1A1A2E' }}>
+    Black 900 · 路地の街、大田
+  </div>
+</div>
+
+---
+
+## 의미 기반 웨이트 시스템
+
+웨이트는 "예쁘게" 가 아니라 **정보의 중요도** 를 나타낸다.
+
+| 역할 | 토큰 | 웨이트 | 용도 | 빈도 |
+|------|-----|--------|------|------|
+| **Meta** | `--fw-meta` | 300 Light | 시간·거리·가격·날짜 | 자유롭게 |
+| **Body** | `--fw-body` | 400 Regular | 본문 | 페이지 70% |
+| **UI** | `--fw-ui` | 500 Medium | 버튼·태그·네비 | 조작 요소 |
+| **Title** | `--fw-title` | 700 Bold | 카드 제목·섹션 헤더 | 섹션당 2-3개 |
+| **Hero** | `--fw-hero` | 900 Black | 통계·이벤트·랜딩 | 페이지당 1-2회 |
+
+---
+
+## CJK 이탤릭 함정
+
+영어권 디자인은 강조에 이탤릭(`<em>`) 을 자주 쓰지만 **CJK 에는 이탤릭 개념이 없다**. 강제 기울임은 글자가 깨져 보임.
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: 16,
+  marginBlock: 16,
+}}>
+  <div style={{ padding: 16, background: '#EDEAFC', borderRadius: 12 }}>
+    <div style={{ fontSize: 11, color: '#4A3A8C', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      ✓ English / Español
+    </div>
+    <div style={{ fontFamily: 'Fraunces, serif', fontSize: 18, fontStyle: 'italic', color: '#4A3A8C' }}>
+      half the point
+    </div>
+  </div>
+  <div style={{ padding: 16, background: '#FFD6E0', borderRadius: 12 }}>
+    <div style={{ fontSize: 11, color: '#A8456B', marginBottom: 8, letterSpacing: 1, textTransform: 'uppercase' }}>
+      ✗ CJK (한·일·중) — 이탤릭 금지
+    </div>
+    <div style={{ fontFamily: '"Gowun Batang", serif', fontSize: 18, fontWeight: 700, color: '#A8456B' }}>
+      절반은 놓치는 거예요
+    </div>
+    <div style={{ fontSize: 10, color: '#A8456B', marginTop: 4 }}>
+      대신 굵게 + 컬러로 강조
+    </div>
+  </div>
+</div>

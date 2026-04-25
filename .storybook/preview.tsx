@@ -74,6 +74,13 @@ const preview: Preview = {
 
   /* ----- Viewport / Backgrounds / Controls ----- */
   parameters: {
+    /* 사이드바 정렬: Foundation → Atoms → Molecules → Organisms → Templates */
+    options: {
+      storySort: {
+        order: ['Foundation', 'Atoms', 'Molecules', 'Organisms', 'Templates'],
+      },
+    },
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
