@@ -133,4 +133,8 @@
   --z-modal:    300;
   --z-toast:    400;
   --z-tooltip:  500;
+
+  /* ========== Shadows (--ink alpha 변형) ========== */
+  --shadow-sm: 0 8px 24px rgba(26, 26, 46, 0.08);  /* Card hover */
+  --shadow-md: 0 8px 24px rgba(26, 26, 46, 0.12);  /* Dropdown menu */
 }

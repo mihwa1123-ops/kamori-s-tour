@@ -81,7 +81,8 @@ const preview: Preview = {
       },
     },
 
-    /* 컬러 시스템 토큰과 일치하는 backgrounds */
+    /* 컬러 시스템 토큰과 일치하는 backgrounds.
+       ⚠️ 값들은 src/styles/tokens.css 와 반드시 일치해야 함 — 토큰 변경 시 동기화. */
     backgrounds: {
       default: 'off-white',
       values: [
