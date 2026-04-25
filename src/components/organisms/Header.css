@@ -44,13 +44,32 @@
 /* ----- Logo ----- */
 .header__logo {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-serif);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-ui);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   color: var(--ink);
   text-decoration: none;
+  line-height: 1.2;
+}
+
+.header__logo-name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-title); /* BOLD per spec */
+  color: var(--ink);
+}
+
+.header__logo-tag {
+  font-size: var(--fs-sub);
+  font-weight: var(--fw-meta);
+  color: var(--slate);
+  letter-spacing: 0.2px;
+}
+
+@media (max-width: 1023px) {
+  .header__logo-tag {
+    display: none; /* 모바일은 좁은 헤더에서 tagline 숨김 */
+  }
 }
 
 /* ----- Nav (PC only) ----- */

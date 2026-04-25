@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { LanguageSwitcher } from '../molecules/LanguageSwitcher';
+import { isValidLang } from '../../data/spots';
 import './Header.css';
 
 export interface HeaderProps {
@@ -14,6 +16,8 @@ const SCROLL_THRESHOLD = 24;
 
 export function Header({ variant = 'transparent' }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
+  const params = useParams<{ lang?: string }>();
+  const lang = isValidLang(params.lang) ? params.lang : 'en';
 
   useEffect(() => {
     if (variant === 'solid') return;
@@ -30,15 +34,20 @@ export function Header({ variant = 'transparent' }: HeaderProps) {
   return (
     <header className={`header header--${effectiveVariant}`}>
       <div className="header__inner">
-        <a href="/" className="header__logo" aria-label="daejeon/slow 홈">
-          <span>daejeon/slow</span>
-        </a>
+        <Link
+          to={`/${lang}`}
+          className="header__logo"
+          aria-label="Kamori Connect 홈"
+        >
+          <span className="header__logo-name">Kamori Connect</span>
+          <span className="header__logo-tag">Local Stories · Daejeon</span>
+        </Link>
 
         <nav className="header__nav" aria-label="메인">
-          <a href="/route">Route</a>
-          <a href="/map">Map</a>
-          <a href="/stories">Stories</a>
-          <a href="/about">About</a>
+          <Link to={`/${lang}/route`}>Route</Link>
+          <Link to={`/${lang}/map`}>Map</Link>
+          <Link to={`/${lang}/stories`}>Stories</Link>
+          <Link to={`/${lang}/about`}>About</Link>
         </nav>
 
         <div className="header__lang">

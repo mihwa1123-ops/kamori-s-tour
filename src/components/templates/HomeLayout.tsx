@@ -1,7 +1,8 @@
 import { Header } from '../organisms/Header';
 import { SpotCard } from '../organisms/SpotCard';
-import { FieldNote } from '../organisms/FieldNote';
+import { CourseBuilder } from '../organisms/CourseBuilder';
 import { RouteTimeline, type RouteSpot } from '../organisms/RouteTimeline';
+import { BottomTabBar } from '../organisms/BottomTabBar';
 import { BlobMask } from '../molecules/BlobMask';
 import { Button } from '../atoms/Button';
 import { SPOT_LIST } from '../../data/spots';
@@ -79,61 +80,6 @@ const KV_CONTENT: Record<
   },
 };
 
-const FIELD_NOTE_CONTENT: Record<
-  Lang,
-  {
-    quote: string;
-    highlight: string;
-    initials: string;
-    name: string;
-    role: string;
-    cta: string;
-  }
-> = {
-  en: {
-    quote:
-      'If you miss the 7am light on the railway bricks, you miss half the point.',
-    highlight: 'half the point',
-    initials: 'M',
-    name: 'Min-ji',
-    role: 'local guide, 3rd generation',
-    cta: 'Read full story',
-  },
-  ja: {
-    quote: '朝7時の鉄道レンガに光が差す瞬間を逃すと、半分は意味がない。',
-    highlight: '半分は意味がない',
-    initials: 'み',
-    name: 'みんじ',
-    role: '地元ガイド · 3代目',
-    cta: '物語を読む',
-  },
-  ko: {
-    quote: '아침 7시 철도 벽돌에 비치는 빛을 놓치면, 절반은 놓치는 거예요.',
-    highlight: '절반은 놓치는 거예요',
-    initials: '민',
-    name: '민지',
-    role: '동네 가이드 · 3대',
-    cta: '전체 이야기 읽기',
-  },
-  es: {
-    quote:
-      'Si te pierdes la luz de las 7am sobre los ladrillos del ferrocarril, te pierdes la mitad.',
-    highlight: 'la mitad',
-    initials: 'M',
-    name: 'Min-ji',
-    role: 'guía local, 3ra generación',
-    cta: 'Leer historia',
-  },
-  zh: {
-    quote: '如果错过了早上7点照在铁路砖墙上的光,就错过了一半的意义。',
-    highlight: '一半的意义',
-    initials: '民',
-    name: '民智',
-    role: '本地向导 · 第三代',
-    cta: '阅读全文',
-  },
-};
-
 const ROUTE_SPOTS: RouteSpot[] = [
   { id: 'soje', number: 1, name: 'Soje-dong', category: 'heritage' },
   {
@@ -180,7 +126,6 @@ export interface HomeLayoutProps {
 
 export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
   const kv = KV_CONTENT[locale];
-  const fn = FIELD_NOTE_CONTENT[locale];
 
   return (
     <div className="home-layout">
@@ -242,20 +187,10 @@ export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
           </div>
         </section>
 
-        {/* ===== Field Note ===== */}
-        <section className="field-note-section">
+        {/* ===== Course Builder (구. Field Note) ===== */}
+        <section className="field-note-section" id="course-builder">
           <div className="container">
-            <FieldNote
-              quote={fn.quote}
-              highlight={fn.highlight}
-              author={{
-                initials: fn.initials,
-                name: fn.name,
-                role: fn.role,
-              }}
-              ctaLabel={fn.cta}
-              onCtaClick={() => {}}
-            />
+            <CourseBuilder locale={locale} />
           </div>
         </section>
 
@@ -273,10 +208,8 @@ export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
         </div>
       </footer>
 
-      {/* Floating CTA — 모바일 only */}
-      <button type="button" className="floating-cta">
-        {kv.cta}
-      </button>
+      {/* 모바일 앱 스타일 하단 탭바 */}
+      <BottomTabBar />
     </div>
   );
 }

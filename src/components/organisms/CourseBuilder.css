@@ -1,0 +1,187 @@
+.course-builder {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.course-builder__label {
+  font-size: var(--fs-caption);
+  letter-spacing: 3px;
+  color: var(--yel-500);
+  font-weight: var(--fw-ui);
+  text-transform: uppercase;
+}
+
+.course-builder__title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-title);
+  color: var(--white);
+  margin: 0;
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+}
+
+html[lang='ja'] .course-builder__title,
+html[lang='ko'] .course-builder__title,
+html[lang='zh'] .course-builder__title,
+html[lang='zh-CN'] .course-builder__title {
+  font-style: normal;
+}
+
+.course-builder__desc {
+  font-size: var(--fs-sub);
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ===== Map placeholder ===== */
+.course-builder__map {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-builder__map-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  padding: var(--space-5);
+}
+
+.course-builder__pin {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.course-builder__pin.is-active {
+  border-color: var(--white);
+  transform: scale(1.4);
+  box-shadow: 0 0 0 4px rgba(165, 148, 249, 0.3);
+}
+
+.course-builder__map-caption {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: var(--fs-caption);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+/* ===== Spot list ===== */
+.course-builder__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.course-builder__spot {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  color: var(--white);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.course-builder__spot:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.course-builder__spot.is-active {
+  background: rgba(165, 148, 249, 0.15);
+  border-color: var(--lav-500);
+}
+
+.course-builder__check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  font-size: var(--fs-caption);
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.course-builder__spot.is-active .course-builder__check {
+  background: var(--lav-500);
+  border-color: var(--lav-500);
+  color: var(--ink);
+}
+
+.course-builder__spot-name {
+  font-family: var(--font-serif);
+  font-size: var(--fs-sub);
+  flex: 1;
+}
+
+.course-builder__spot-walk {
+  font-size: var(--fs-caption);
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-family: var(--font-serif);
+  white-space: nowrap;
+}
+
+html[lang='ja'] .course-builder__spot-walk,
+html[lang='ko'] .course-builder__spot-walk,
+html[lang='zh'] .course-builder__spot-walk,
+html[lang='zh-CN'] .course-builder__spot-walk {
+  font-style: normal;
+}
+
+/* ===== Total ===== */
+.course-builder__total {
+  font-size: var(--fs-sub);
+  color: var(--yel-500);
+  font-weight: var(--fw-ui);
+  padding: var(--space-3) 0 0;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Actions ===== */
+.course-builder__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: var(--space-3);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.course-builder__actions .btn--ghost {
+  color: rgba(255, 255, 255, 0.7);
+}
+.course-builder__actions .btn--ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+}

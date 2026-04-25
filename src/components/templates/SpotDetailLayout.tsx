@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Header } from '../organisms/Header';
+import { BottomTabBar } from '../organisms/BottomTabBar';
 import { BlobMask, type BlobShape } from '../molecules/BlobMask';
 import { Tag, type TagVariant } from '../atoms/Tag';
 import { Button } from '../atoms/Button';
@@ -313,10 +314,8 @@ export function SpotDetailLayout({
         </div>
       </footer>
 
-      {/* Floating CTA (mobile only) */}
-      <button type="button" className="floating-cta">
-        {c.ctaPrimary}
-      </button>
+      {/* 모바일 앱 스타일 하단 탭바 */}
+      <BottomTabBar />
     </div>
   );
 }

@@ -12,3 +12,8 @@ export type { RouteTimelineProps, RouteSpot } from './RouteTimeline';
 
 export { BottomSheet } from './BottomSheet';
 export type { BottomSheetProps } from './BottomSheet';
+
+export { BottomTabBar } from './BottomTabBar';
+
+export { CourseBuilder, loadSavedCourses } from './CourseBuilder';
+export type { CourseBuilderProps, SavedCourse } from './CourseBuilder';

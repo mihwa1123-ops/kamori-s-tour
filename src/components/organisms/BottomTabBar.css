@@ -1,0 +1,62 @@
+.bottom-tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-sticky);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: var(--white);
+  border-top: 0.5px solid var(--color-border-subtle);
+  /* iOS safe area */
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  box-shadow: var(--shadow-up);
+}
+
+.bottom-tab-bar__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 4px 8px;
+  min-height: 56px;
+  text-decoration: none;
+  color: var(--slate);
+  transition: color 0.15s, background 0.15s;
+}
+
+.bottom-tab-bar__item:hover {
+  background: var(--silver-veil);
+}
+
+.bottom-tab-bar__item.is-active {
+  color: var(--lav-600);
+}
+
+.bottom-tab-bar__icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-tab-bar__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-tab-bar__label {
+  font-size: 10px;
+  font-weight: var(--fw-ui);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+/* PC 에서는 숨김 — 헤더 nav 가 역할 대신함 */
+@media (min-width: 1024px) {
+  .bottom-tab-bar {
+    display: none;
+  }
+}
