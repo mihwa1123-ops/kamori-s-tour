@@ -22,13 +22,13 @@
 }
 
 .info-row__label {
-  font-size: 12px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   letter-spacing: 0.5px;
 }
 
 .info-row__value {
-  font-size: 13px;
+  font-size: var(--fs-sub);
   color: var(--ink);
   font-weight: var(--fw-ui);
 }

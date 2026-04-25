@@ -29,7 +29,7 @@
 /* ===== Breadcrumb ===== */
 .spot-detail__breadcrumb {
   padding: var(--space-5) 0 var(--space-4);
-  font-size: 12px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   letter-spacing: 0.5px;
 }
@@ -77,14 +77,14 @@
 }
 
 .spot-detail__meta {
-  font-size: 13px;
+  font-size: var(--fs-sub);
   color: var(--slate);
   margin: 0;
 }
 
 .spot-detail__tagline {
   font-family: var(--font-serif);
-  font-size: 18px;
+  font-size: var(--fs-h6);
   font-style: italic;
   color: var(--slate);
   margin: 0;
@@ -142,7 +142,7 @@ html[lang='zh-CN'] .spot-detail__tagline {
 }
 
 .spot-detail__paragraph {
-  font-size: 16px;
+  font-size: var(--fs-body);
   line-height: 1.75;
   color: var(--ink);
   margin: 0;
@@ -175,7 +175,7 @@ html[lang='ko'] .spot-detail__paragraph {
 }
 
 .spot-detail__caption {
-  font-size: 12px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   font-style: italic;
   font-family: var(--font-serif);
@@ -233,7 +233,7 @@ html[lang='zh-CN'] .spot-detail__caption {
 
 .spot-detail__prev,
 .spot-detail__next {
-  font-size: 13px;
+  font-size: var(--fs-sub);
   color: var(--slate);
   text-decoration: none;
   font-family: var(--font-serif);

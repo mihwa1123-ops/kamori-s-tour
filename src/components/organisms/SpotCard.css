@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 11px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   letter-spacing: 1px;
 }
@@ -32,7 +32,7 @@
 
 .spot-card__title {
   font-family: var(--font-serif);
-  font-size: 22px;
+  font-size: var(--fs-h5);
   font-weight: var(--fw-title);
   color: var(--ink);
   letter-spacing: -0.4px;
@@ -40,7 +40,7 @@
 }
 
 .spot-card__desc {
-  font-size: 13px;
+  font-size: var(--fs-sub);
   color: var(--slate);
   line-height: 1.65;
   margin: 0;
@@ -60,11 +60,11 @@
 }
 
 .spot-card--compact .spot-card__title {
-  font-size: 16px;
+  font-size: var(--fs-body);
   margin: 4px 0 2px;
 }
 
 .spot-card--compact .spot-card__desc {
-  font-size: 12px;
+  font-size: var(--fs-caption);
   line-height: 1.5;
 }

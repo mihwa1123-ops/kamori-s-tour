@@ -34,7 +34,7 @@
 
 /* ----- Connector ----- */
 .route-timeline__connector {
-  font-size: 10px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   font-style: italic;
   font-family: var(--font-serif);
@@ -72,7 +72,7 @@
 
 .route-timeline__name {
   font-family: var(--font-serif);
-  font-size: 14px;
+  font-size: var(--fs-sub);
   color: var(--ink);
 }
 

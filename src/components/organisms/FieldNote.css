@@ -6,7 +6,7 @@
 }
 
 .field-note__label {
-  font-size: 10px;
+  font-size: var(--fs-caption);
   letter-spacing: 3px;
   color: var(--yel-500);
   font-weight: var(--fw-ui);
@@ -54,13 +54,13 @@ html[lang="zh-CN"] .field-note__quote {
 }
 
 .field-note__name {
-  font-size: 13px;
+  font-size: var(--fs-sub);
   font-weight: var(--fw-ui);
   color: var(--white);
 }
 
 .field-note__role {
-  font-size: 11px;
+  font-size: var(--fs-caption);
   font-weight: var(--fw-meta);
   color: rgba(255, 255, 255, 0.6);
 }
@@ -69,7 +69,7 @@ html[lang="zh-CN"] .field-note__quote {
   background: transparent;
   border: none;
   color: var(--lav-500);
-  font-size: 14px;
+  font-size: var(--fs-sub);
   font-weight: var(--fw-ui);
   cursor: pointer;
   padding: 8px 16px;

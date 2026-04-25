@@ -31,6 +31,7 @@ interface DetailContent {
   ctaSecondary: string;
   prevSpot: string;
   nextSpot: string;
+  footerTagline: string;
 }
 
 const DETAIL_CONTENT: Record<Lang, DetailContent> = {
@@ -59,6 +60,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     ctaSecondary: 'Share',
     prevSpot: '← Daejeon Station',
     nextSpot: 'Jungang Market →',
+    footerTagline: 'Connect with Local Stories in Daejeon',
   },
   ja: {
     homeLabel: 'ホーム',
@@ -85,6 +87,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     ctaSecondary: '共有',
     prevSpot: '← 大田駅',
     nextSpot: '中央市場 →',
+    footerTagline: '大田のローカルストーリーとつながる',
   },
   ko: {
     homeLabel: '홈',
@@ -106,6 +109,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     ctaSecondary: '공유',
     prevSpot: '← 대전역',
     nextSpot: '중앙시장 →',
+    footerTagline: '대전의 로컬 스토리와 연결되다',
   },
   es: {
     homeLabel: 'Inicio',
@@ -132,6 +136,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     ctaSecondary: 'Compartir',
     prevSpot: '← Estación Daejeon',
     nextSpot: 'Mercado Jungang →',
+    footerTagline: 'Conecta con historias locales de Daejeon',
   },
   zh: {
     homeLabel: '首页',
@@ -153,6 +158,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     ctaSecondary: '分享',
     prevSpot: '← 大田站',
     nextSpot: '中央市场 →',
+    footerTagline: '与大田的本地故事相连',
   },
 };
 
@@ -303,7 +309,7 @@ export function SpotDetailLayout({
 
       <footer className="home-layout__footer">
         <div className="container">
-          <p>© 2026 kamori&apos;s tour · daejeon/slow</p>
+          <p>© 2026 @hey.kamori | {c.footerTagline}</p>
         </div>
       </footer>
 

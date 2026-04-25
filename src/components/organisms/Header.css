@@ -47,7 +47,7 @@
   align-items: center;
   gap: 10px;
   font-family: var(--font-serif);
-  font-size: 17px;
+  font-size: var(--fs-body);
   font-weight: var(--fw-ui);
   color: var(--ink);
   text-decoration: none;
@@ -61,7 +61,7 @@
 
 .header__nav a {
   color: var(--slate);
-  font-size: 13px;
+  font-size: var(--fs-sub);
   text-decoration: none;
   transition: color 0.2s;
 }

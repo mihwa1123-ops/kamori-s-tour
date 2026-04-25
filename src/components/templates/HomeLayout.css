@@ -33,7 +33,7 @@
 
 .kv__tag {
   display: inline-block;
-  font-size: 11px;
+  font-size: var(--fs-caption);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--slate);
@@ -65,7 +65,7 @@ html[lang='zh-CN'] .kv__title em {
 }
 
 .kv__desc {
-  font-size: 16px;
+  font-size: var(--fs-body);
   line-height: 1.6;
   color: var(--slate);
   margin: 0 0 var(--space-6) 0;
@@ -80,7 +80,7 @@ html[lang='zh-CN'] .kv__title em {
 }
 
 .kv__meta {
-  font-size: 12px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   font-style: italic;
   font-family: var(--font-serif);
@@ -114,7 +114,7 @@ html[lang='zh-CN'] .kv__title em {
   border-radius: 16px;
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: 11px;
+  font-size: var(--fs-caption);
   color: var(--slate);
   white-space: nowrap;
   z-index: var(--z-blob);
@@ -222,7 +222,7 @@ html[lang='zh-CN'] .kv__title em {
   padding: var(--space-7) 0;
   background: var(--ink);
   color: var(--white);
-  font-size: 12px;
+  font-size: var(--fs-caption);
   text-align: center;
   margin-top: var(--space-7);
 }
@@ -244,7 +244,7 @@ html[lang='zh-CN'] .kv__title em {
   border: none;
   border-radius: 28px;
   font-weight: var(--fw-ui);
-  font-size: 15px;
+  font-size: var(--fs-body);
   cursor: pointer;
   font-family: inherit;
   box-shadow: var(--shadow-md);

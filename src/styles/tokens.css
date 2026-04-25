@@ -106,6 +106,23 @@
   --fw-title: 700;  /* Bold   — 제목 */
   --fw-hero:  900;  /* Black  — 히어로 */
 
+  /* ========== Typography · Font Sizes (font-system §4) ==========
+     세 가지 정적 단계 — 본문 16, 부제 14, 캡션 12.
+     헤딩은 16 보다 크게 4의 배수만 허용 (20, 24, 28, 32, 40, 48, 64).
+     responsive 가 필요하면 clamp() 사용하되 양 끝값도 4의 배수. */
+  --fs-caption: 12px;  /* 캡션 · 메타 · 라벨 (uppercase + letter-spacing) */
+  --fs-sub:     14px;  /* 보조 텍스트 · UI · 메뉴 · 설명 */
+  --fs-body:    16px;  /* 본문 · 단락 · CTA · 큰 UI */
+
+  /* Headings (>16, 4의 배수) */
+  --fs-h6:      20px;
+  --fs-h5:      24px;
+  --fs-h4:      28px;
+  --fs-h3:      32px;
+  --fs-h2:      40px;
+  --fs-h1:      48px;
+  --fs-display: 64px;
+
   /* ========== Layout · Breakpoints (layout-system §3) ========== */
   --bp-tablet:  768px;
   --bp-desktop: 1024px;

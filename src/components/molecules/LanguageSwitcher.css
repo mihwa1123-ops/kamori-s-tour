@@ -13,7 +13,7 @@
   color: var(--white);
   border: none;
   border-radius: 20px;
-  font-size: 12px;
+  font-size: var(--fs-caption);
   font-weight: var(--fw-ui);
   cursor: pointer;
   min-height: 36px;
@@ -24,7 +24,7 @@
 }
 
 .lang-switcher__chevron {
-  font-size: 10px;
+  font-size: var(--fs-caption);
   transition: transform 0.2s;
 }
 .lang-switcher__trigger[aria-expanded='true'] .lang-switcher__chevron {
@@ -61,7 +61,7 @@
   border-radius: 8px;
   cursor: pointer;
   color: var(--ink);
-  font-size: 13px;
+  font-size: var(--fs-sub);
   transition: background 0.15s;
 }
 

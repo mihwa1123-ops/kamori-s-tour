@@ -158,9 +158,93 @@ Noto는 **기술적으로 완벽하지만 감성적으로 중립적**이다. 감
 
 ---
 
-## 4. 언어별 폰트 사이즈 조정
+## 4. 폰트 사이즈 시스템
 
-### 4.1 왜 언어마다 사이즈가 다른가
+### 4.0 3 단계 정적 사이즈 + 헤딩 스케일
+
+세 가지 정적 사이즈로 일반 콘텐츠를 모두 표현하고, 헤딩만 16px 보다 크게 4의 배수로 사용한다.
+
+| 토큰 | 픽셀 | 용도 |
+|------|------|------|
+| `--fs-caption` | **12px** | 캡션 · 메타 · uppercase 라벨 · 작은 뱃지 |
+| `--fs-sub` | **14px** | 보조 텍스트 · 메뉴 · 이름 · 설명 |
+| `--fs-body` | **16px** | 본문 · 단락 · CTA 라벨 · 큰 UI |
+
+**헤딩** (16px 보다 크게, **4의 배수만**):
+
+| 토큰 | 픽셀 | 일반 사용처 |
+|------|------|----------|
+| `--fs-h6` | 20px | 작은 카드 제목, 인용 본문 |
+| `--fs-h5` | 24px | 카드 제목 (예: SpotCard) |
+| `--fs-h4` | 28px | 섹션 헤더, FieldNote 인용 |
+| `--fs-h3` | 32px | 페이지 부제목, 모바일 KV |
+| `--fs-h2` | 40px | 데스크톱 큰 제목 |
+| `--fs-h1` | 48px | 강한 페이지 타이틀 |
+| `--fs-display` | 64px | KV 헤로 (가장 큰 한 자리) |
+
+**원칙**: 절대 `font-size: 11px`, `13px`, `15px`, `18px`, `22px` 등 **사이 값 사용 금지**. 모든 production CSS 는 위 토큰을 통해서만 사용.
+
+### 4.1 CSS 구현
+
+`tokens.css` 에 정의:
+
+```css
+:root {
+  --fs-caption: 12px;
+  --fs-sub:     14px;
+  --fs-body:    16px;
+  --fs-h6:      20px;
+  --fs-h5:      24px;
+  --fs-h4:      28px;
+  --fs-h3:      32px;
+  --fs-h2:      40px;
+  --fs-h1:      48px;
+  --fs-display: 64px;
+}
+```
+
+컴포넌트에서 사용:
+
+```css
+.spot-card__title { font-size: var(--fs-h5); }     /* 24px */
+.spot-card__desc  { font-size: var(--fs-sub); }    /* 14px */
+.spot-card__meta  { font-size: var(--fs-caption); } /* 12px */
+.btn--lg          { font-size: var(--fs-body); }   /* 16px */
+```
+
+### 4.2 반응형 헤딩 (clamp)
+
+KV 헤로처럼 viewport 따라 변하는 헤딩은 `clamp()` 사용. **양 끝값 모두 4의 배수 필수**:
+
+```css
+.kv__title {
+  font-size: clamp(32px, 7vw, 44px);  /* 모바일 */
+}
+
+@media (min-width: 1024px) {
+  .kv__title {
+    font-size: clamp(40px, 5vw, 64px);  /* PC */
+  }
+}
+
+.field-note__quote {
+  font-size: clamp(20px, 3vw, 28px);
+}
+```
+
+### 4.3 언어별 폰트 사이즈 조정
+
+같은 의미의 문장도 언어마다 길이가 다르고, 한자는 획수가 많아 더 크게 써야 가독성이 좋다.
+
+| 언어 | 히어로 기본 사이즈 | 이유 |
+|------|-----------------|------|
+| English | `clamp(44px, 5vw, 64px)` | 기준값 |
+| Español | `clamp(40px, 4.2vw, 56px)` | 단어가 더 길어서 살짝 축소 (4의 배수) |
+| 日本語 | `clamp(36px, 4vw, 52px)` | 가나+한자 혼용, 영어보다 약간 작게 (4의 배수) |
+| 한국어 | `clamp(40px, 4.5vw, 56px)` | 받침 있는 글자 고려 (4의 배수) |
+| 中文 | `clamp(44px, 5.2vw, 68px)` | 한자 획 밀도 때문에 가장 크게 (4의 배수) |
+
+### 4.4 (Legacy) 언어별 오버라이드 예시
 
 같은 의미의 문장도 언어마다 길이가 다르고, 한자는 획수가 많아 더 크게 써야 가독성이 좋다.
 
@@ -172,20 +256,18 @@ Noto는 **기술적으로 완벽하지만 감성적으로 중립적**이다. 감
 | 한국어 | `clamp(40px, 4.5vw, 58px)` | 받침 있는 글자 고려 |
 | 中文 | `clamp(44px, 5.2vw, 68px)` | 한자 획 밀도 때문에 가장 크게 |
 
-### 4.2 CSS 구현
-
 ```css
 /* 기본 (영어 기준) */
 .hero__title { font-size: clamp(44px, 5vw, 64px); }
 
-/* 언어별 오버라이드 */
-html[lang="es"] .hero__title { font-size: clamp(38px, 4.2vw, 54px); }
+/* 언어별 오버라이드 (모든 양 끝값 4의 배수) */
+html[lang="es"] .hero__title { font-size: clamp(40px, 4.2vw, 56px); }
 html[lang="ja"] .hero__title { font-size: clamp(36px, 4vw, 52px); }
-html[lang="ko"] .hero__title { font-size: clamp(40px, 4.5vw, 58px); }
+html[lang="ko"] .hero__title { font-size: clamp(40px, 4.5vw, 56px); }
 html[lang="zh"] .hero__title { font-size: clamp(44px, 5.2vw, 68px); }
 ```
 
-### 4.3 line-height도 언어별로
+### 4.5 line-height도 언어별로
 
 | 언어 | line-height |
 |------|------------|

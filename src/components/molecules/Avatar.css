@@ -13,17 +13,17 @@
 .avatar--sm {
   width: 24px;
   height: 24px;
-  font-size: 11px;
+  font-size: var(--fs-caption);
 }
 .avatar--md {
   width: 32px;
   height: 32px;
-  font-size: 13px;
+  font-size: var(--fs-sub);
 }
 .avatar--lg {
   width: 48px;
   height: 48px;
-  font-size: 18px;
+  font-size: var(--fs-h6);
 }
 
 /* ----- Initial variants ----- */
