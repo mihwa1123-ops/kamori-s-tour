@@ -199,15 +199,28 @@ GitHub 저장소 → Settings → Secrets and variables → Actions:
 
 자세한 배포 가이드는 [`session-prompts/session-8-deploy.md`](./session-prompts/session-8-deploy.md) §"사용자가 직접 할 작업" 섹션 참조.
 
-### 🌐 Storybook URL
+### 🌐 라이브 URL
 
-- 🔗 **공개 Storybook (디자이너 공유용)**: https://69ec746a28b7fedb4f390f33-wdzxomupmc.chromatic.com/
+- 🔗 **공개 웹서비스 (Vercel)**: https://kamori-s-tour.vercel.app
+- 🔗 **공개 Storybook (Chromatic)**: https://69ec746a28b7fedb4f390f33-wdzxomupmc.chromatic.com/
 - 🔗 **GitHub repo**: https://github.com/mihwa1123-ops/kamori-s-tour
 - 🔗 **Chromatic 관리**: https://www.chromatic.com/manage?appId=69ec746a28b7fedb4f390f33
 
-#### 디자이너 공유 가이드
+#### 라우트 구조 (웹서비스)
 
-위 Storybook URL 에서 다음 페이지 위주로 보세요:
+| 경로 | 설명 |
+|------|------|
+| `/` | `/en` 으로 자동 리다이렉트 |
+| `/en` `/ja` `/ko` `/es` `/zh` | 5개 언어 홈 페이지 |
+| `/:lang/spot/soje-dong` | Heritage · 소제동 철도관사촌 |
+| `/:lang/spot/jungang` | Market · 중앙시장 |
+| `/:lang/spot/bomunsan` | Nature · 보문산 |
+
+홈 페이지의 SpotCard 클릭 → 해당 spot 상세 페이지로 이동. 잘못된 경로는 `/en` 으로 자동 리다이렉트.
+
+#### 디자이너 공유 가이드 (Storybook)
+
+Chromatic Storybook URL 에서 다음 페이지 위주로 보세요:
 
 - `Foundation/Colors` — 3색 시스템 + 카테고리 매핑
 - `Foundation/Typography` — 5개 언어 폰트 매트릭스
