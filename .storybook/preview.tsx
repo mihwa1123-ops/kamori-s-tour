@@ -1,5 +1,6 @@
 import type { Preview } from '@storybook/react-vite';
 import React, { useEffect } from 'react';
+import { MemoryRouter } from 'react-router-dom';
 
 /* ===== Design System CSS ===== */
 import '../src/styles/tokens.css';
@@ -46,6 +47,16 @@ const withLanguage = (Story: React.ComponentType, context: { globals: { locale?:
   return <Story />;
 };
 
+/* ===== Router 데코레이터 =====
+   LanguageSwitcher 등이 useNavigate/useLocation 를 사용하므로
+   모든 스토리를 MemoryRouter 로 감싸 Router context 제공.
+   초기 경로 /en 로 두면 LanguageSwitcher 가 영어로 active 표시. */
+const withRouter = (Story: React.ComponentType) => (
+  <MemoryRouter initialEntries={['/en']}>
+    <Story />
+  </MemoryRouter>
+);
+
 const preview: Preview = {
   /* ----- 툴바 언어 스위처 ----- */
   globalTypes: {
@@ -70,7 +81,7 @@ const preview: Preview = {
     locale: 'en',
   },
 
-  decorators: [withLanguage],
+  decorators: [withLanguage, withRouter],
 
   /* ----- Viewport / Backgrounds / Controls ----- */
   parameters: {

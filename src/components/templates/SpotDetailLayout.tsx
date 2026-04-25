@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Header } from '../organisms/Header';
 import { BlobMask, type BlobShape } from '../molecules/BlobMask';
 import { Tag, type TagVariant } from '../atoms/Tag';
@@ -163,9 +164,16 @@ export interface SpotDetailData {
   imageAlt: string;
 }
 
+export interface SpotNavLink {
+  id: string;
+  name: string;
+}
+
 export interface SpotDetailLayoutProps {
   locale?: Lang;
   spot?: SpotDetailData;
+  prevSpot?: SpotNavLink;
+  nextSpot?: SpotNavLink;
 }
 
 const DEFAULT_SPOT: SpotDetailData = {
@@ -179,6 +187,8 @@ const DEFAULT_SPOT: SpotDetailData = {
 export function SpotDetailLayout({
   locale = 'en',
   spot = DEFAULT_SPOT,
+  prevSpot,
+  nextSpot,
 }: SpotDetailLayoutProps) {
   const c = DETAIL_CONTENT[locale];
 
@@ -257,17 +267,33 @@ export function SpotDetailLayout({
           </div>
 
           {/* ===== Prev/Next Nav ===== */}
-          <nav
-            className="spot-detail__prev-next"
-            aria-label="Previous / Next spot"
-          >
-            <a href="#prev" className="spot-detail__prev">
-              {c.prevSpot}
-            </a>
-            <a href="#next" className="spot-detail__next">
-              {c.nextSpot}
-            </a>
-          </nav>
+          {(prevSpot || nextSpot) && (
+            <nav
+              className="spot-detail__prev-next"
+              aria-label="Previous / Next spot"
+            >
+              {prevSpot ? (
+                <Link
+                  to={`/${locale}/spot/${prevSpot.id}`}
+                  className="spot-detail__prev"
+                >
+                  ← {prevSpot.name}
+                </Link>
+              ) : (
+                <span className="spot-detail__prev spot-detail__nav-placeholder" aria-hidden="true" />
+              )}
+              {nextSpot ? (
+                <Link
+                  to={`/${locale}/spot/${nextSpot.id}`}
+                  className="spot-detail__next"
+                >
+                  {nextSpot.name} →
+                </Link>
+              ) : (
+                <span className="spot-detail__next spot-detail__nav-placeholder" aria-hidden="true" />
+              )}
+            </nav>
+          )}
         </div>
       </main>
 

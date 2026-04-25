@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './LanguageSwitcher.css';
 
 export type Lang = 'en' | 'ja' | 'ko' | 'es' | 'zh';
@@ -11,7 +12,10 @@ const LANGS: ReadonlyArray<{ code: Lang; label: string; htmlLang: string }> = [
   { code: 'zh', label: '中文', htmlLang: 'zh-CN' },
 ];
 
+const LANG_PATH_RE = /^\/(en|ja|ko|es|zh)(?=\/|$)/;
+
 export interface LanguageSwitcherProps {
+  /** URL 매칭 실패 시 폴백 (e.g. Storybook 스토리, 잘못된 경로) */
   defaultLang?: Lang;
   onChange?: (lang: Lang) => void;
 }
@@ -20,7 +24,13 @@ export function LanguageSwitcher({
   defaultLang = 'en',
   onChange,
 }: LanguageSwitcherProps) {
-  const [current, setCurrent] = useState<Lang>(defaultLang);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // URL 의 lang 세그먼트를 단일 출처로 사용. 매칭 실패 시 defaultLang.
+  const langFromPath = (location.pathname.match(LANG_PATH_RE)?.[1] as Lang | undefined);
+  const current = langFromPath ?? defaultLang;
+
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -29,8 +39,17 @@ export function LanguageSwitcher({
   const switchLang = (lang: Lang) => {
     const meta = LANGS.find((l) => l.code === lang);
     if (!meta) return;
-    setCurrent(lang);
+
+    // URL 의 lang 세그먼트를 새 lang 으로 치환. 매칭이 없으면 /lang 로 이동.
+    const newPath = location.pathname.match(LANG_PATH_RE)
+      ? location.pathname.replace(LANG_PATH_RE, `/${lang}`)
+      : `/${lang}`;
+
+    // html.lang 은 페이지의 useSyncHtmlLang 훅이 처리하지만,
+    // 즉각 반응을 위해 여기서도 한 번 갱신.
     document.documentElement.lang = meta.htmlLang;
+
+    navigate(newPath);
     onChange?.(lang);
     setOpen(false);
   };
