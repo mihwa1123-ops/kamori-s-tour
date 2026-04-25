@@ -1,9 +1,10 @@
 import { Header } from '../organisms/Header';
-import { SpotCard, type Spot } from '../organisms/SpotCard';
+import { SpotCard } from '../organisms/SpotCard';
 import { FieldNote } from '../organisms/FieldNote';
 import { RouteTimeline, type RouteSpot } from '../organisms/RouteTimeline';
 import { BlobMask } from '../molecules/BlobMask';
 import { Button } from '../atoms/Button';
+import { SPOT_LIST } from '../../data/spots';
 import './HomeLayout.css';
 
 export type Lang = 'en' | 'ja' | 'ko' | 'es' | 'zh';
@@ -127,39 +128,6 @@ const FIELD_NOTE_CONTENT: Record<
   },
 };
 
-const SPOTS: Spot[] = [
-  {
-    id: 'soje-dong',
-    category: 'heritage',
-    shape: 'heritage',
-    name: 'Soje-dong',
-    description: 'Railway village, now cafés.',
-    walkTime: 5,
-    imageSrc: 'https://placehold.co/600x600/A594F9/1A1A2E?text=Soje',
-    imageAlt: '소제동 철도관사촌',
-  },
-  {
-    id: 'jungang',
-    category: 'market',
-    shape: 'market',
-    name: 'Jungang Market',
-    description: 'Since 1905, still loud.',
-    walkTime: 8,
-    imageSrc: 'https://placehold.co/600x600/FFB3C6/1A1A2E?text=Jungang',
-    imageAlt: '중앙시장',
-  },
-  {
-    id: 'bomunsan',
-    category: 'nature',
-    shape: 'nature',
-    name: 'Bomunsan',
-    description: 'A pine forest downtown.',
-    walkTime: 20,
-    imageSrc: 'https://placehold.co/600x600/FFE663/1A1A2E?text=Bomunsan',
-    imageAlt: '보문산',
-  },
-];
-
 const ROUTE_SPOTS: RouteSpot[] = [
   { id: 'soje', number: 1, name: 'Soje-dong', category: 'heritage' },
   {
@@ -201,9 +169,10 @@ const ROUTE_SPOTS: RouteSpot[] = [
 
 export interface HomeLayoutProps {
   locale?: Lang;
+  onSpotClick?: (spotId: string) => void;
 }
 
-export function HomeLayout({ locale = 'en' }: HomeLayoutProps) {
+export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
   const kv = KV_CONTENT[locale];
   const fn = FIELD_NOTE_CONTENT[locale];
 
@@ -254,8 +223,14 @@ export function HomeLayout({ locale = 'en' }: HomeLayoutProps) {
         <section className="three-alleys">
           <div className="container">
             <div className="three-alleys__grid">
-              {SPOTS.map((spot) => (
-                <SpotCard key={spot.id} spot={spot} onClick={() => {}} />
+              {SPOT_LIST.map((spot) => (
+                <SpotCard
+                  key={spot.id}
+                  spot={spot}
+                  onClick={
+                    onSpotClick ? () => onSpotClick(spot.id) : undefined
+                  }
+                />
               ))}
             </div>
           </div>

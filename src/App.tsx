@@ -1,8 +1,16 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import SpotPage from './pages/SpotPage';
+
 export default function App() {
   return (
-    <main style={{ padding: 'var(--space-6)' }}>
-      <h1>kamori's tour</h1>
-      <p>Design system scaffold — see Storybook for components.</p>
-    </main>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/en" replace />} />
+        <Route path="/:lang" element={<HomePage />} />
+        <Route path="/:lang/spot/:id" element={<SpotPage />} />
+        <Route path="*" element={<Navigate to="/en" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
