@@ -1,0 +1,241 @@
+.spot-detail {
+  background: var(--off-white);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+.spot-detail .container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1360px;
+}
+
+@media (min-width: 768px) {
+  .spot-detail .container {
+    padding: 0 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .spot-detail .container {
+    padding: 0 40px;
+  }
+}
+
+.spot-detail__main-wrap {
+  padding-bottom: var(--space-9);
+}
+
+/* ===== Breadcrumb ===== */
+.spot-detail__breadcrumb {
+  padding: var(--space-5) 0 var(--space-4);
+  font-size: 12px;
+  color: var(--slate);
+  letter-spacing: 0.5px;
+}
+
+/* ===== Hero ===== */
+.spot-detail__hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-bottom: var(--space-7);
+}
+
+.spot-detail__hero-blob {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.spot-detail__hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.spot-detail__title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: var(--fw-title);
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--ink);
+}
+
+.spot-detail__meta {
+  font-size: 13px;
+  color: var(--slate);
+  margin: 0;
+}
+
+.spot-detail__tagline {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--slate);
+  margin: 0;
+  max-width: 520px;
+}
+
+html[lang='ja'] .spot-detail__tagline,
+html[lang='ko'] .spot-detail__tagline,
+html[lang='zh'] .spot-detail__tagline,
+html[lang='zh-CN'] .spot-detail__tagline {
+  font-style: normal;
+}
+
+@media (min-width: 1024px) {
+  .spot-detail__hero {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-8);
+    padding: var(--space-7) 0 var(--space-8);
+  }
+
+  .spot-detail__hero-blob {
+    width: 320px;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  .spot-detail__hero-info {
+    flex: 1;
+  }
+}
+
+/* ===== Body + Sidebar Grid ===== */
+.spot-detail__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: 0.5px solid var(--color-border-subtle);
+}
+
+@media (min-width: 1024px) {
+  .spot-detail__grid {
+    grid-template-columns: 65% 35%;
+    gap: var(--space-8);
+    padding-top: var(--space-7);
+  }
+}
+
+/* ----- Body (좌측) ----- */
+.spot-detail__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.spot-detail__paragraph {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0;
+  max-width: 600px;
+}
+
+html[lang='ko'] .spot-detail__paragraph {
+  line-height: 1.85;
+}
+
+.spot-detail__gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .spot-detail__gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gallery-image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--silver-veil);
+}
+
+.spot-detail__caption {
+  font-size: 12px;
+  color: var(--slate);
+  font-style: italic;
+  font-family: var(--font-serif);
+  margin: var(--space-2) 0 0 0;
+  text-align: center;
+}
+
+html[lang='ja'] .spot-detail__caption,
+html[lang='ko'] .spot-detail__caption,
+html[lang='zh'] .spot-detail__caption,
+html[lang='zh-CN'] .spot-detail__caption {
+  font-style: normal;
+}
+
+/* ----- Sidebar (우측, PC sticky) ----- */
+.spot-detail__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  background: var(--white);
+  border: 0.5px solid var(--color-border-subtle);
+  border-radius: 16px;
+  padding: var(--space-5);
+}
+
+.spot-detail__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.spot-detail__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+@media (min-width: 1024px) {
+  .spot-detail__sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+}
+
+/* ===== Prev/Next Nav ===== */
+.spot-detail__prev-next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-9);
+  padding-top: var(--space-6);
+  border-top: 0.5px solid var(--color-border-subtle);
+  gap: var(--space-4);
+}
+
+.spot-detail__prev,
+.spot-detail__next {
+  font-size: 13px;
+  color: var(--slate);
+  text-decoration: none;
+  font-family: var(--font-serif);
+  transition: color 0.2s;
+}
+
+.spot-detail__prev:hover,
+.spot-detail__next:hover {
+  color: var(--ink);
+}
+
+.spot-detail__next {
+  font-weight: var(--fw-ui);
+  text-align: right;
+}
