@@ -40,6 +40,29 @@ export const SPOTS: Record<string, Spot> = {
 
 export const SPOT_LIST: Spot[] = Object.values(SPOTS);
 
+/* ============================================================
+   Geographic coordinates (대전 원도심 일대)
+   Leaflet/Naver Map 등에서 사용. WGS84 lat/lng 순서.
+   ============================================================ */
+export interface SpotGeo {
+  id: string;
+  lat: number;
+  lng: number;
+}
+
+export const SPOT_COORDS: Record<string, SpotGeo> = {
+  'soje-dong': { id: 'soje-dong', lat: 36.3389, lng: 127.4439 },
+  'jungang':   { id: 'jungang',   lat: 36.3290, lng: 127.4271 },
+  'bomunsan':  { id: 'bomunsan',  lat: 36.3018, lng: 127.4318 },
+};
+
+/** 대전 원도심 지도의 기본 중심 좌표 + 줌 */
+export const DAEJEON_CENTER: { lat: number; lng: number; zoom: number } = {
+  lat: 36.330,
+  lng: 127.435,
+  zoom: 13,
+};
+
 export const SUPPORTED_LANGS = ['en', 'ja', 'ko', 'es', 'zh'] as const;
 export type SupportedLang = (typeof SUPPORTED_LANGS)[number];
 

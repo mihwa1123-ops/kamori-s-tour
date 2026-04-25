@@ -60,16 +60,10 @@
 }
 
 .header__logo-tag {
-  font-size: var(--fs-sub);
+  font-size: var(--fs-caption);  /* 12px (per 디자인 명세) */
   font-weight: var(--fw-meta);
   color: var(--slate);
   letter-spacing: 0.2px;
-}
-
-@media (max-width: 1023px) {
-  .header__logo-tag {
-    display: none; /* 모바일은 좁은 헤더에서 tagline 숨김 */
-  }
 }
 
 /* ----- Nav (PC only) ----- */

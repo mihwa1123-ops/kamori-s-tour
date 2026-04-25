@@ -36,139 +36,168 @@ html[lang='zh-CN'] .course-builder__title {
   line-height: 1.6;
 }
 
-/* ===== Map placeholder ===== */
+/* ===== 1. Map (Leaflet) ===== */
 .course-builder__map {
   position: relative;
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(135deg, #2a2a4a 0%, #1a1a2e 100%);
   border-radius: 16px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.course-builder__map-grid {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  justify-items: center;
-  padding: var(--space-5);
+.course-builder__map-canvas {
+  height: 320px;
+  width: 100%;
+  background: #1a1a2e;
 }
 
-.course-builder__pin {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 3px solid rgba(255, 255, 255, 0.4);
-  transition: transform 0.2s, border-color 0.2s;
+/* leaflet 컨트롤 다크 테마 */
+.course-builder__map .leaflet-control-zoom a {
+  background: var(--ink);
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
 }
-
-.course-builder__pin.is-active {
-  border-color: var(--white);
-  transform: scale(1.4);
-  box-shadow: 0 0 0 4px rgba(165, 148, 249, 0.3);
+.course-builder__map .leaflet-control-zoom a:hover {
+  background: var(--lav-600);
 }
-
-.course-builder__map-caption {
-  position: relative;
-  z-index: 1;
+.course-builder__map .leaflet-control-attribution {
   background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.7);
+}
+.course-builder__map .leaflet-control-attribution a {
+  color: var(--lav-500);
+}
+
+.course-builder__map-hint {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
   color: var(--white);
   padding: 6px 12px;
   border-radius: 12px;
   font-size: var(--fs-caption);
   font-style: italic;
   font-family: var(--font-serif);
+  z-index: 1000;
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: 88%;
+  text-align: center;
 }
 
-/* ===== Spot list ===== */
-.course-builder__list {
+html[lang='ja'] .course-builder__map-hint,
+html[lang='ko'] .course-builder__map-hint,
+html[lang='zh'] .course-builder__map-hint,
+html[lang='zh-CN'] .course-builder__map-hint {
+  font-style: normal;
+}
+
+/* ===== 2. Selected timeline ===== */
+.course-builder__selected {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+.course-builder__selected-title {
+  font-size: var(--fs-caption);
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: var(--fw-ui);
+}
+
+.course-builder__selected-meta {
+  color: var(--yel-500);
+  letter-spacing: 0.2px;
+  text-transform: none;
+  margin-left: 4px;
+}
+
+.course-builder__empty {
+  margin: 0;
+  font-size: var(--fs-sub);
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-family: var(--font-serif);
+}
+
+html[lang='ja'] .course-builder__empty,
+html[lang='ko'] .course-builder__empty,
+html[lang='zh'] .course-builder__empty,
+html[lang='zh-CN'] .course-builder__empty {
+  font-style: normal;
+}
+
+.course-builder__timeline {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--space-2);
 }
 
-.course-builder__spot {
+.course-builder__timeline-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.course-builder__connector {
+  font-size: var(--fs-caption);
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-family: var(--font-serif);
+  padding-left: var(--space-3);
+}
+
+html[lang='ja'] .course-builder__connector,
+html[lang='ko'] .course-builder__connector,
+html[lang='zh'] .course-builder__connector,
+html[lang='zh-CN'] .course-builder__connector {
+  font-style: normal;
+}
+
+.course-builder__timeline-btn {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   width: 100%;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 8px 12px;
   cursor: pointer;
   font-family: inherit;
   text-align: left;
   color: var(--white);
   transition: background 0.15s, border-color 0.15s;
 }
-
-.course-builder__spot:hover {
-  background: rgba(255, 255, 255, 0.06);
+.course-builder__timeline-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-.course-builder__spot.is-active {
-  background: rgba(165, 148, 249, 0.15);
-  border-color: var(--lav-500);
-}
-
-.course-builder__check {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  font-size: var(--fs-caption);
-  color: var(--ink);
-  flex-shrink: 0;
-}
-
-.course-builder__spot.is-active .course-builder__check {
-  background: var(--lav-500);
-  border-color: var(--lav-500);
-  color: var(--ink);
-}
-
-.course-builder__spot-name {
+.course-builder__timeline-name {
   font-family: var(--font-serif);
   font-size: var(--fs-sub);
   flex: 1;
 }
 
-.course-builder__spot-walk {
-  font-size: var(--fs-caption);
-  color: rgba(255, 255, 255, 0.5);
-  font-style: italic;
-  font-family: var(--font-serif);
-  white-space: nowrap;
+.course-builder__timeline-x {
+  font-size: var(--fs-h6);
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1;
+}
+.course-builder__timeline-btn:hover .course-builder__timeline-x {
+  color: var(--pink-500);
 }
 
-html[lang='ja'] .course-builder__spot-walk,
-html[lang='ko'] .course-builder__spot-walk,
-html[lang='zh'] .course-builder__spot-walk,
-html[lang='zh-CN'] .course-builder__spot-walk {
-  font-style: normal;
-}
-
-/* ===== Total ===== */
-.course-builder__total {
-  font-size: var(--fs-sub);
-  color: var(--yel-500);
-  font-weight: var(--fw-ui);
-  padding: var(--space-3) 0 0;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.15);
-}
-
-/* ===== Actions ===== */
+/* ===== 3. Actions (단 아래) ===== */
 .course-builder__actions {
   display: flex;
   gap: var(--space-2);

@@ -87,30 +87,32 @@ html[lang='zh-CN'] .kv__title em {
 }
 
 .kv__visual {
-  position: relative;
   margin-top: var(--space-6);
-  height: 50vh;
-  min-height: 360px;
+  /* 모바일: 비대칭 2 블롭 grid (PC 의 absolute 비대칭 분위기 유지하되 클리핑 ❌) */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  column-gap: var(--space-2);
+  row-gap: var(--space-3);
 }
 
-/* 모바일에서도 PC 와 동일한 비대칭 2 블롭 배치 (작은 사이즈) */
 .kv__blob {
-  position: absolute;
+  width: 100%;
 }
 
 .kv__blob--nature {
-  top: 0;
-  right: 4%;
-  width: 64%;
-  max-width: 280px;
+  grid-column: 2;
+  grid-row: 1;
   z-index: 2;
 }
 
 .kv__blob--heritage {
-  bottom: 4%;
-  left: 4%;
-  width: 44%;
-  max-width: 180px;
+  grid-column: 1;
+  grid-row: 2;
+  width: 80%;
+  margin-top: -16%;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 1;
 }
 
@@ -131,7 +133,7 @@ html[lang='zh-CN'] .kv__title em {
   z-index: var(--z-blob);
 }
 
-/* PC: Anti-Grid 비대칭 배치 */
+/* PC: Anti-Grid 비대칭 absolute 배치 */
 @media (min-width: 1024px) {
   .kv {
     display: grid;
@@ -152,9 +154,16 @@ html[lang='zh-CN'] .kv__title em {
   }
 
   .kv__visual {
+    /* PC 는 grid 무시하고 absolute 위치 기반 */
+    display: block;
+    position: relative;
     height: 70vh;
     min-height: 500px;
     margin: 0;
+  }
+
+  .kv__blob {
+    position: absolute;
   }
 
   .kv__blob--nature {
@@ -162,13 +171,18 @@ html[lang='zh-CN'] .kv__title em {
     right: 5%;
     width: 340px;
     max-width: none;
+    grid-column: unset;
+    grid-row: unset;
   }
 
   .kv__blob--heritage {
+    grid-column: unset;
+    grid-row: unset;
     bottom: 12%;
     left: 8%;
     width: 240px;
     max-width: none;
+    margin: 0;
   }
 }
 
@@ -187,7 +201,9 @@ html[lang='zh-CN'] .kv__title em {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0 12% 8px;  /* 좌우 12% 여백 → 인접 카드 일부 보임 */
+  /* top padding: 회전된 BlobMask 가 부모 overflow-x:auto 의
+     vertical clipping 에 잘리지 않도록 헤드룸 확보 */
+  padding: 16px 12% 12px;
   margin: 0 calc(-1 * var(--space-5));
 }
 .three-alleys__grid::-webkit-scrollbar {
