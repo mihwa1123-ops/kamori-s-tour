@@ -10,7 +10,7 @@ import './SpotDetailLayout.css';
 export type Lang = 'en' | 'ja' | 'ko' | 'es' | 'zh';
 
 interface DetailContent {
-  breadcrumb: string;
+  homeLabel: string;
   meta: string;
   tagline: string;
   body: string[];
@@ -35,7 +35,7 @@ interface DetailContent {
 
 const DETAIL_CONTENT: Record<Lang, DetailContent> = {
   en: {
-    breadcrumb: 'Home / Soje-dong',
+    homeLabel: 'Home',
     meta: '🚶 5 min · FREE',
     tagline: 'Railway village, now cafés.',
     body: [
@@ -61,7 +61,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     nextSpot: 'Jungang Market →',
   },
   ja: {
-    breadcrumb: 'ホーム / 素堤洞',
+    homeLabel: 'ホーム',
     meta: '🚶 5分 · 無料',
     tagline: '鉄道村から路地カフェへ。',
     body: [
@@ -87,7 +87,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     nextSpot: '中央市場 →',
   },
   ko: {
-    breadcrumb: '홈 / 소제동',
+    homeLabel: '홈',
     meta: '🚶 5분 · 무료',
     tagline: '철도 마을에서 골목 카페로.',
     body: [
@@ -108,7 +108,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     nextSpot: '중앙시장 →',
   },
   es: {
-    breadcrumb: 'Inicio / Soje-dong',
+    homeLabel: 'Inicio',
     meta: '🚶 5 min · GRATIS',
     tagline: 'Pueblo ferroviario, ahora cafés.',
     body: [
@@ -134,7 +134,7 @@ const DETAIL_CONTENT: Record<Lang, DetailContent> = {
     nextSpot: 'Mercado Jungang →',
   },
   zh: {
-    breadcrumb: '首页 / 素堤洞',
+    homeLabel: '首页',
     meta: '🚶 5 分钟 · 免费',
     tagline: '从铁路村到巷子咖啡馆。',
     body: [
@@ -199,7 +199,11 @@ export function SpotDetailLayout({
       <main className="spot-detail__main-wrap">
         <div className="container">
           <nav className="spot-detail__breadcrumb" aria-label="Breadcrumb">
-            <span>{c.breadcrumb}</span>
+            <Link to={`/${locale}`} className="spot-detail__breadcrumb-home">
+              {c.homeLabel}
+            </Link>
+            <span aria-hidden="true"> / </span>
+            <span>{spot.name}</span>
           </nav>
 
           {/* ===== Hero (BlobMask 1개만) ===== */}

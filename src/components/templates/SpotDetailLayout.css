@@ -34,6 +34,16 @@
   letter-spacing: 0.5px;
 }
 
+.spot-detail__breadcrumb-home {
+  color: var(--slate);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.spot-detail__breadcrumb-home:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
 /* ===== Hero ===== */
 .spot-detail__hero {
   display: flex;
