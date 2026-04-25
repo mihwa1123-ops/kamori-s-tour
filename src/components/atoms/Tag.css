@@ -1,0 +1,56 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 20px;
+  font-weight: var(--fw-ui);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tag--sm {
+  padding: 3px 9px;
+  font-size: 10px;
+}
+.tag--md {
+  padding: 4px 12px;
+  font-size: 11px;
+}
+
+/* ----- Category variants (color-system §5.1) ----- */
+.tag--heritage {
+  background: var(--lav-50);
+  color: var(--lav-800);
+}
+.tag--market {
+  background: var(--pink-50);
+  color: var(--pink-800);
+}
+.tag--food {
+  background: var(--yel-50);
+  color: var(--yel-800);
+}
+.tag--story {
+  background: var(--lav-100);
+  color: var(--lav-800);
+}
+.tag--alleys {
+  background: var(--pink-100);
+  color: var(--pink-800);
+}
+.tag--nature {
+  background: var(--yel-100);
+  color: var(--yel-900);
+  border: 1px solid var(--yel-500);
+}
+
+/* ----- Utility variants ----- */
+.tag--meta {
+  background: var(--silver-veil);
+  color: var(--slate);
+}
+.tag--accent {
+  background: var(--yel-500);
+  color: var(--ink);
+}

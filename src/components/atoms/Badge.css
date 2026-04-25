@@ -1,0 +1,39 @@
+.badge {
+  display: inline-block;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge--sm {
+  width: 6px;
+  height: 6px;
+}
+.badge--md {
+  width: 10px;
+  height: 10px;
+}
+.badge--lg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ----- Category dots ----- */
+.badge--heritage {
+  background: var(--lav-500);
+}
+.badge--market {
+  background: var(--pink-500);
+}
+.badge--food {
+  background: var(--yel-500);
+}
+.badge--story {
+  background: var(--lav-300, var(--lav-200));
+}
+.badge--alleys {
+  background: var(--pink-300, var(--pink-100));
+}
+.badge--nature {
+  background: var(--yel-500);
+  border: 1px solid var(--lav-500);
+}

@@ -1,0 +1,40 @@
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  padding: 0;
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-btn--default {
+  color: var(--ink);
+}
+.icon-btn--default:hover:not(:disabled) {
+  background: var(--silver-veil);
+}
+
+.icon-btn--subtle {
+  color: var(--slate);
+}
+.icon-btn--subtle:hover:not(:disabled) {
+  background: var(--silver-veil);
+  color: var(--ink);
+}
+
+.icon-btn--sm {
+  width: 36px;
+  height: 36px;
+}
+.icon-btn--md {
+  width: 44px;
+  height: 44px;
+}

@@ -1,0 +1,43 @@
+.num-marker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-weight: var(--fw-ui);
+  flex-shrink: 0;
+}
+
+.num-marker--sm {
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+}
+.num-marker--md {
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+.num-marker--lg {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+/* ----- Variants ----- */
+.num-marker--lavender {
+  background: var(--lav-500);
+  color: var(--ink);
+}
+.num-marker--pink {
+  background: var(--pink-500);
+  color: var(--ink);
+}
+.num-marker--yellow {
+  background: var(--yel-500);
+  color: var(--ink);
+}
+.num-marker--dark {
+  background: var(--ink);
+  color: var(--white);
+}
