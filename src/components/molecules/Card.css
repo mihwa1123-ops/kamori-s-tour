@@ -1,0 +1,57 @@
+.card {
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* ----- Variants ----- */
+.card--default {
+  background: var(--color-bg-surface);
+  border: 0.5px solid var(--color-border-subtle);
+}
+
+.card--tinted {
+  border: none;
+}
+.card--tint-lavender {
+  background: var(--lav-50);
+}
+.card--tint-pink {
+  background: var(--pink-50);
+}
+.card--tint-yellow {
+  background: var(--yel-50);
+}
+
+.card--dark {
+  background: var(--ink);
+  color: var(--white);
+}
+
+/* ----- Paddings ----- */
+.card--p-sm {
+  padding: var(--space-4);
+}
+.card--p-md {
+  padding: var(--space-5);
+}
+.card--p-lg {
+  padding: var(--space-6);
+}
+
+/* ----- Hoverable ----- */
+.card--hoverable {
+  cursor: pointer;
+}
+.card--hoverable:hover {
+  transform: translateY(-2px);
+  /* TODO: replace with --shadow-md token when defined (--ink alpha 8%) */
+  box-shadow: 0 8px 24px rgba(26, 26, 46, 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card--hoverable:hover {
+    transform: none;
+  }
+}

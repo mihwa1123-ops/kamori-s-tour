@@ -1,0 +1,46 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-family: var(--font-serif);
+  font-weight: var(--fw-ui);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ----- Sizes ----- */
+.avatar--sm {
+  width: 24px;
+  height: 24px;
+  font-size: 11px;
+}
+.avatar--md {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+.avatar--lg {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+/* ----- Initial variants ----- */
+.avatar--pink {
+  background: var(--pink-500);
+  color: var(--pink-900);
+}
+.avatar--lavender {
+  background: var(--lav-500);
+  color: var(--ink);
+}
+.avatar--yellow {
+  background: var(--yel-500);
+  color: var(--ink);
+}
+
+/* ----- Image mode ----- */
+img.avatar {
+  object-fit: cover;
+}

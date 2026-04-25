@@ -1,0 +1,77 @@
+.lang-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+/* ----- Trigger button ----- */
+.lang-switcher__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: var(--fw-ui);
+  cursor: pointer;
+  min-height: 36px;
+  transition: background 0.2s;
+}
+.lang-switcher__trigger:hover {
+  background: color-mix(in srgb, var(--ink) 88%, var(--white));
+}
+
+.lang-switcher__chevron {
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+.lang-switcher__trigger[aria-expanded='true'] .lang-switcher__chevron {
+  transform: rotate(180deg);
+}
+
+/* ----- Dropdown menu ----- */
+.lang-switcher__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  background: var(--white);
+  border: 0.5px solid var(--color-border-subtle);
+  border-radius: 14px;
+  padding: 6px;
+  /* TODO: replace with --shadow-lg token when defined (--ink alpha 12%) */
+  box-shadow: 0 8px 24px rgba(26, 26, 46, 0.12);
+  list-style: none;
+  margin: 0;
+  z-index: var(--z-dropdown);
+}
+
+.lang-switcher__menu li {
+  margin: 0;
+}
+
+.lang-switcher__menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--ink);
+  font-size: 13px;
+  transition: background 0.15s;
+}
+
+.lang-switcher__menu button:hover {
+  background: var(--silver-veil);
+}
+
+.lang-switcher__menu button.is-active {
+  background: var(--lav-50);
+  color: var(--lav-800);
+  font-weight: var(--fw-ui);
+}

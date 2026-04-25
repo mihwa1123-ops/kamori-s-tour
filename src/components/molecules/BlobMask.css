@@ -1,0 +1,49 @@
+.blob-mask {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  position: relative;
+}
+
+.blob-mask svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.blob-mask__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.blob-mask__overlay > * {
+  pointer-events: auto;
+}
+
+/* ----- Placeholder (이미지 로드 전 / 깨진 이미지) ----- */
+.blob-mask--heritage .blob-mask__placeholder {
+  fill: var(--lav-100);
+}
+.blob-mask--market .blob-mask__placeholder {
+  fill: var(--pink-100);
+}
+.blob-mask--nature .blob-mask__placeholder {
+  fill: var(--yel-100);
+}
+
+/* ----- Strategic Rotation (1~3°) ----- */
+.blob-mask--heritage {
+  transform: rotate(-2deg);
+}
+.blob-mask--market {
+  transform: rotate(1.5deg);
+}
+.blob-mask--nature {
+  transform: rotate(-1deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-mask {
+    transform: none !important;
+  }
+}
