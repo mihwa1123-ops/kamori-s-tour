@@ -199,12 +199,23 @@ GitHub 저장소 → Settings → Secrets and variables → Actions:
 
 자세한 배포 가이드는 [`session-prompts/session-8-deploy.md`](./session-prompts/session-8-deploy.md) §"사용자가 직접 할 작업" 섹션 참조.
 
-### Storybook URL
+### 🌐 Storybook URL
 
-배포 후 이 섹션에 URL 추가:
+- 🔗 **공개 Storybook (디자이너 공유용)**: https://69ec746a28b7fedb4f390f33-wdzxomupmc.chromatic.com/
+- 🔗 **GitHub repo**: https://github.com/mihwa1123-ops/kamori-s-tour
+- 🔗 **Chromatic 관리**: https://www.chromatic.com/manage?appId=69ec746a28b7fedb4f390f33
 
-- 🔗 **Storybook (Chromatic)**: `https://...` _(배포 후 갱신)_
-- 🔗 **GitHub repo**: `https://...` _(배포 후 갱신)_
+#### 디자이너 공유 가이드
+
+위 Storybook URL 에서 다음 페이지 위주로 보세요:
+
+- `Foundation/Colors` — 3색 시스템 + 카테고리 매핑
+- `Foundation/Typography` — 5개 언어 폰트 매트릭스
+- `Foundation/Shapes` — 3가지 블롭 쉐이프 (디자인 시그니처)
+- `Templates/HomeLayout` — 홈 페이지 (5개 언어 + mobile/tablet/desktop)
+- `Templates/SpotDetailLayout` — 스팟 상세 페이지
+
+상단 툴바 🌐 Language 로 5개 언어 전환, Viewport 로 화면 크기 전환 가능.
 
 ---
 
