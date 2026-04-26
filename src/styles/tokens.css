@@ -140,14 +140,15 @@
   --space-9:  96px;
   --space-10: 128px;
 
-  /* ========== Layout · Z-Index (layout-system §10) ========== */
-  --z-base:     0;
-  --z-blob:     2;
-  --z-dropdown: 10;
-  --z-sticky:   100;
-  --z-header:   100;
-  --z-overlay:  200;
-  --z-modal:    300;
+  /* ========== Layout · Z-Index (layout-system §10) ==========
+     순서 (낮음 → 높음): 컨텐츠 < 하단 고정 UI < 헤더 < 팝업/다이얼로그 */
+  --z-base:     0;     /* 페이지 컨텐츠 */
+  --z-blob:     2;     /* KV 장식 블롭 */
+  --z-dropdown: 10;    /* 자체 stacking context 내부 드롭다운 */
+  --z-sticky:   50;    /* 하단 고정 UI: BottomTabBar, BottomSheet, Floating CTA, action bar */
+  --z-header:   80;    /* 페이지 헤더 (하단 고정 UI 위) */
+  --z-overlay:  200;   /* 모달 백드롭 */
+  --z-modal:    300;   /* 팝업, 다이얼로그 */
   --z-toast:    400;
   --z-tooltip:  500;
 

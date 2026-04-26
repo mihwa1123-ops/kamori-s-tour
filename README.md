@@ -201,7 +201,7 @@ GitHub 저장소 → Settings → Secrets and variables → Actions:
 
 ### 🌐 라이브 URL
 
-- 🔗 **공개 웹서비스 (Vercel)**: https://kamori-s-tour.vercel.app
+- 🔗 **공개 웹서비스 (Vercel)**: https://kamori-connect.vercel.app
 - 🔗 **공개 Storybook (Chromatic)**: https://69ec746a28b7fedb4f390f33-wdzxomupmc.chromatic.com/
 - 🔗 **GitHub repo**: https://github.com/mihwa1123-ops/kamori-s-tour
 - 🔗 **Chromatic 관리**: https://www.chromatic.com/manage?appId=69ec746a28b7fedb4f390f33
