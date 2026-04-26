@@ -208,20 +208,44 @@ html[lang='zh-CN'] .kv__title em {
   margin: 0;
 }
 
-/* 모바일: 2x2 그리드 / 태블릿+: 4컬럼 */
-.pick-theme__grid {
+/* 모바일: 가로 스와이프 (75% 카드 폭, 옆 카드 ~12% 피크) */
+.pick-theme__rail {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-3);
+  grid-auto-flow: column;
+  grid-auto-columns: 75%;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* 회전된 BlobMask 가 vertical clipping 에 잘리지 않도록 헤드룸 */
+  padding: 16px 12% 16px;
+  margin: 0 calc(-1 * var(--space-5));
+}
+.pick-theme__rail::-webkit-scrollbar {
+  display: none;
+}
+.pick-theme__rail > * {
+  scroll-snap-align: center;
 }
 
+/* 태블릿/PC: 일반 4컬럼 그리드 (스와이프 X) */
 @media (min-width: 768px) {
   .pick-theme {
     padding: var(--space-8) 0;
   }
-  .pick-theme__grid {
+  .pick-theme__rail {
+    grid-auto-flow: row;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-4);
+    grid-auto-columns: auto;
+    gap: var(--space-5);
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+    scroll-snap-type: none;
+  }
+  .pick-theme__rail > * {
+    scroll-snap-align: none;
   }
 }
 
@@ -229,65 +253,74 @@ html[lang='zh-CN'] .kv__title em {
   .pick-theme {
     padding: var(--space-9) 0;
   }
+  .pick-theme__rail {
+    gap: var(--space-7);
+  }
 }
 
-/* ===== Theme Card ===== */
+/* ===== Theme Card (BlobMask 기반) ===== */
 .theme-card {
   --theme-color: var(--lav-500);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding: var(--space-5) var(--space-3);
-  min-height: 160px;
-  background: var(--theme-color);
-  border-radius: 20px;
+  gap: var(--space-3);
   text-decoration: none;
   color: var(--ink);
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-  overflow: hidden;
-  /* 명도가 높은 컬러 위에 가독성 보장 — color-system Golden Rule */
-}
-
-.theme-card::before {
-  /* 살짝의 텍스처를 위한 과도한 화이트 오버레이 */
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 60%);
-  pointer-events: none;
+  transition: transform 0.2s;
 }
 
 .theme-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(26, 26, 46, 0.18);
 }
 
 .theme-card:focus-visible {
   outline: 3px solid var(--ink);
-  outline-offset: 3px;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.theme-card__visual {
+  position: relative;
+}
+
+/* BlobMask 의 placeholder fill 을 테마 컬러로 오버라이드 */
+.theme-card .blob-mask--heritage .blob-mask__placeholder,
+.theme-card .blob-mask--market .blob-mask__placeholder,
+.theme-card .blob-mask--nature .blob-mask__placeholder {
+  fill: var(--theme-color);
 }
 
 .theme-card__emoji {
-  font-size: clamp(32px, 8vw, 48px);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(48px, 10vw, 72px);
   line-height: 1;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.15));
+}
+
+.theme-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 var(--space-2);
 }
 
 .theme-card__name {
   font-family: var(--font-serif);
-  font-size: clamp(18px, 2.4vw, 22px);
+  font-size: clamp(20px, 2.6vw, 26px);
   font-weight: var(--fw-title);
-  letter-spacing: -0.3px;
+  color: var(--ink);
+  letter-spacing: -0.4px;
+  margin: 0;
 }
 
 .theme-card__count {
   font-size: var(--fs-caption);
+  color: var(--slate);
   font-weight: var(--fw-meta);
-  color: var(--ink);
-  opacity: 0.75;
   letter-spacing: 0.3px;
 }
 

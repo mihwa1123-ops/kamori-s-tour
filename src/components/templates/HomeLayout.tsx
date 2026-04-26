@@ -2,10 +2,18 @@ import { Link } from 'react-router-dom';
 import { Header } from '../organisms/Header';
 import { CourseBuilder } from '../organisms/CourseBuilder';
 import { BottomTabBar } from '../organisms/BottomTabBar';
-import { BlobMask } from '../molecules/BlobMask';
+import { BlobMask, type BlobShape } from '../molecules/BlobMask';
 import { Button } from '../atoms/Button';
 import { ATTRACTIONS, THEME_META, type Theme } from '../../data/attractions';
 import './HomeLayout.css';
+
+/** 테마 → BlobMask 쉐이프 매핑 (시각적 어울림 기준) */
+const THEME_SHAPE: Record<Theme, BlobShape> = {
+  sight:   'market',    // 다중 피크 = 놀이공원·관광지
+  history: 'heritage',  // H 기둥 = 전통·역사
+  nature:  'nature',    // K 곡선 = 유기적·자연
+  food:    'heritage',  // 모임·공동체 (역사와 같은 H, 컬러로 구분)
+};
 
 export type Lang = 'en' | 'ja' | 'ko' | 'es' | 'zh';
 
@@ -162,7 +170,7 @@ export function HomeLayout({ locale = 'en' }: HomeLayoutProps) {
               <p className="pick-theme__sub">{t.sub}</p>
             </header>
 
-            <div className="pick-theme__grid">
+            <div className="pick-theme__rail">
               {(Object.keys(THEME_META) as Theme[]).map((th) => {
                 const meta = THEME_META[th];
                 return (
@@ -172,9 +180,23 @@ export function HomeLayout({ locale = 'en' }: HomeLayoutProps) {
                     className="theme-card"
                     style={{ '--theme-color': meta.color } as React.CSSProperties}
                   >
-                    <span className="theme-card__emoji" aria-hidden="true">{meta.emoji}</span>
-                    <span className="theme-card__name">{themeLabel(th)}</span>
-                    <span className="theme-card__count">{themeCounts[th]} {t.placesUnit}</span>
+                    <div className="theme-card__visual">
+                      <BlobMask
+                        shape={THEME_SHAPE[th]}
+                        alt=""
+                        overlay={
+                          <span className="theme-card__emoji" aria-hidden="true">
+                            {meta.emoji}
+                          </span>
+                        }
+                      />
+                    </div>
+                    <div className="theme-card__body">
+                      <h3 className="theme-card__name">{themeLabel(th)}</h3>
+                      <span className="theme-card__count">
+                        {themeCounts[th]} {t.placesUnit}
+                      </span>
+                    </div>
                   </Link>
                 );
               })}
