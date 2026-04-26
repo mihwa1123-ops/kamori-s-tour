@@ -1,0 +1,31 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#FAFAFA"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#A594F9"/>
+
+  <!-- Kamori Connect K-shape badge (좌측) -->
+  <g transform="translate(120, 195) scale(1.4)">
+    <path d="M50.9209 5C67.141 5 81.1064 14.6545 87.3838 28.5303C95.1902 14.4964 110.168 5.00002 127.366 5H133.461C156.955 5.00013 176 24.0454 176 47.5391C176 71.0328 156.955 90.079 133.461 90.0791H133.539C156.989 90.0791 176 109.089 176 132.539C176 155.989 156.989 175 133.539 175H127.366C110.168 175 95.1901 165.503 87.3838 151.469C81.1065 165.345 67.1413 175 50.9209 175H46C23.9086 175 6 157.091 6 135V45C6 22.9086 23.9086 5 46 5H50.9209Z" fill="#A594F9"/>
+  </g>
+
+  <!-- Wordmark + tagline (중앙~우측) -->
+  <text x="450" y="290" font-family="Inter, -apple-system, system-ui, sans-serif" font-size="84" font-weight="800" fill="#1A1A2E" letter-spacing="-2">Kamori Connect</text>
+  <text x="450" y="345" font-family="Pretendard, Inter, sans-serif" font-size="32" font-weight="500" fill="#555566">대전 중구 로컬 스토리 · 4테마 투어 빌더</text>
+
+  <!-- 4 theme chips -->
+  <g font-family="Pretendard, Inter, sans-serif" font-size="22" font-weight="600">
+    <rect x="450" y="395" width="118" height="48" rx="24" fill="#E63946"/>
+    <text x="509" y="427" text-anchor="middle" fill="#fff">관광 4</text>
+
+    <rect x="582" y="395" width="118" height="48" rx="24" fill="#8B5CF6"/>
+    <text x="641" y="427" text-anchor="middle" fill="#fff">역사 7</text>
+
+    <rect x="714" y="395" width="118" height="48" rx="24" fill="#22C55E"/>
+    <text x="773" y="427" text-anchor="middle" fill="#fff">자연 3</text>
+
+    <rect x="846" y="395" width="118" height="48" rx="24" fill="#F59E0B"/>
+    <text x="905" y="427" text-anchor="middle" fill="#fff">맛집 12</text>
+  </g>
+
+  <!-- URL footer -->
+  <text x="450" y="510" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="#555566">kamori-connect.vercel.app</text>
+</svg>
