@@ -39,8 +39,7 @@ export function Header({ variant = 'transparent' }: HeaderProps) {
           className="header__logo"
           aria-label="Kamori Connect 홈"
         >
-          <span className="header__logo-name">Kamori Connect</span>
-          <span className="header__logo-tag">Local Stories · Daejeon</span>
+          <img src="/logo.svg" alt="Kamori Connect" className="header__logo-img" />
         </Link>
 
         <nav className="header__nav" aria-label="메인">

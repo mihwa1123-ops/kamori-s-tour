@@ -44,26 +44,28 @@
 /* ----- Logo ----- */
 .header__logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
+  align-items: center;
   color: var(--ink);
   text-decoration: none;
-  line-height: 1.2;
+  line-height: 1;
 }
 
-.header__logo-name {
-  font-family: var(--font-serif);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-title); /* BOLD per spec */
-  color: var(--ink);
+.header__logo-img {
+  height: 2.5rem;
+  width: auto;
+  max-width: none;
+  display: block;
+  flex-shrink: 0;
 }
 
-.header__logo-tag {
-  font-size: var(--fs-caption);  /* 12px (per 디자인 명세) */
-  font-weight: var(--fw-meta);
-  color: var(--slate);
-  letter-spacing: 0.2px;
+.header__logo {
+  flex-shrink: 0;
+}
+
+@media (max-width: 1023px) {
+  .header__logo-img {
+    height: 2rem;
+  }
 }
 
 /* ----- Nav (PC only) ----- */
