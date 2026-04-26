@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom';
 import { Header } from '../organisms/Header';
-import { SpotCard } from '../organisms/SpotCard';
 import { CourseBuilder } from '../organisms/CourseBuilder';
 import { BottomTabBar } from '../organisms/BottomTabBar';
 import { BlobMask } from '../molecules/BlobMask';
 import { Button } from '../atoms/Button';
-import { SPOT_LIST } from '../../data/spots';
+import { ATTRACTIONS, THEME_META, type Theme } from '../../data/attractions';
 import './HomeLayout.css';
 
 export type Lang = 'en' | 'ja' | 'ko' | 'es' | 'zh';
@@ -79,13 +79,37 @@ const KV_CONTENT: Record<
   },
 };
 
+/** 테마 섹션 i18n 라벨 */
+const PICK_THEME: Record<Lang, { title: string; sub: string; placesUnit: string }> = {
+  en: { title: 'Pick a theme',  sub: 'Browse by what catches your eye.', placesUnit: 'places' },
+  ja: { title: 'テーマを選ぶ',   sub: '気になるテーマから始めよう。',     placesUnit: '箇所' },
+  ko: { title: '테마 고르기',     sub: '관심 가는 테마부터 둘러보세요.',   placesUnit: '곳' },
+  es: { title: 'Elige un tema', sub: 'Explora lo que te llame la atención.', placesUnit: 'lugares' },
+  zh: { title: '选择主题',       sub: '从感兴趣的主题开始。',             placesUnit: '处' },
+};
+
 export interface HomeLayoutProps {
   locale?: Lang;
-  onSpotClick?: (spotId: string) => void;
 }
 
-export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
+export function HomeLayout({ locale = 'en' }: HomeLayoutProps) {
   const kv = KV_CONTENT[locale];
+  const t = PICK_THEME[locale];
+
+  /** 테마별 장소 개수 (카드 메타 표시용) */
+  const themeCounts = ATTRACTIONS.reduce<Record<Theme, number>>(
+    (acc, a) => ({ ...acc, [a.theme]: (acc[a.theme] ?? 0) + 1 }),
+    { sight: 0, history: 0, nature: 0, food: 0 }
+  );
+
+  const themeLabel = (th: Theme): string => {
+    const m = THEME_META[th];
+    return locale === 'ko' ? m.labelKo
+         : locale === 'ja' ? m.labelJa
+         : locale === 'es' ? m.labelEs
+         : locale === 'zh' ? m.labelZh
+         : m.labelEn;
+  };
 
   return (
     <div className="home-layout">
@@ -130,19 +154,30 @@ export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
           </div>
         </section>
 
-        {/* ===== Three Alleys ===== */}
-        <section className="three-alleys">
+        {/* ===== Pick a theme ===== */}
+        <section className="pick-theme">
           <div className="container">
-            <div className="three-alleys__grid">
-              {SPOT_LIST.map((spot) => (
-                <SpotCard
-                  key={spot.id}
-                  spot={spot}
-                  onClick={
-                    onSpotClick ? () => onSpotClick(spot.id) : undefined
-                  }
-                />
-              ))}
+            <header className="pick-theme__header">
+              <h2 className="pick-theme__title">{t.title}</h2>
+              <p className="pick-theme__sub">{t.sub}</p>
+            </header>
+
+            <div className="pick-theme__grid">
+              {(Object.keys(THEME_META) as Theme[]).map((th) => {
+                const meta = THEME_META[th];
+                return (
+                  <Link
+                    key={th}
+                    to={`/${locale}/theme/${th}`}
+                    className="theme-card"
+                    style={{ '--theme-color': meta.color } as React.CSSProperties}
+                  >
+                    <span className="theme-card__emoji" aria-hidden="true">{meta.emoji}</span>
+                    <span className="theme-card__name">{themeLabel(th)}</span>
+                    <span className="theme-card__count">{themeCounts[th]} {t.placesUnit}</span>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

@@ -184,57 +184,111 @@ html[lang='zh-CN'] .kv__title em {
   }
 }
 
-/* ===== Three Alleys Section ===== */
-.three-alleys {
+/* ===== Pick a Theme Section ===== */
+.pick-theme {
   padding: var(--space-7) 0;
 }
 
-/* 모바일 (~767px): 가로 스와이프, 옆 카드 ~20% 피크 */
-.three-alleys__grid {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 75%;
-  gap: var(--space-4);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  /* top padding: 회전된 BlobMask 가 부모 overflow-x:auto 의
-     vertical clipping 에 잘리지 않도록 헤드룸 확보 */
-  padding: 16px 12% 12px;
-  margin: 0 calc(-1 * var(--space-5));
-}
-.three-alleys__grid::-webkit-scrollbar {
-  display: none;
-}
-.three-alleys__grid > * {
-  scroll-snap-align: center;
+.pick-theme__header {
+  margin-bottom: var(--space-5);
 }
 
-/* 태블릿/PC: 일반 3컬럼 그리드 */
+.pick-theme__title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: var(--fw-title);
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin: 0 0 var(--space-1) 0;
+}
+
+.pick-theme__sub {
+  font-size: var(--fs-sub);
+  color: var(--slate);
+  margin: 0;
+}
+
+/* 모바일: 2x2 그리드 / 태블릿+: 4컬럼 */
+.pick-theme__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
 @media (min-width: 768px) {
-  .three-alleys {
+  .pick-theme {
     padding: var(--space-8) 0;
   }
-  .three-alleys__grid {
-    grid-auto-flow: row;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-columns: auto;
-    gap: var(--space-7);
-    overflow: visible;
-    padding: 0;
-    margin: 0;
-    scroll-snap-type: none;
-  }
-  .three-alleys__grid > * {
-    scroll-snap-align: none;
+  .pick-theme__grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
   }
 }
 
 @media (min-width: 1024px) {
-  .three-alleys {
+  .pick-theme {
     padding: var(--space-9) 0;
   }
+}
+
+/* ===== Theme Card ===== */
+.theme-card {
+  --theme-color: var(--lav-500);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-3);
+  min-height: 160px;
+  background: var(--theme-color);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+  /* 명도가 높은 컬러 위에 가독성 보장 — color-system Golden Rule */
+}
+
+.theme-card::before {
+  /* 살짝의 텍스처를 위한 과도한 화이트 오버레이 */
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 60%);
+  pointer-events: none;
+}
+
+.theme-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(26, 26, 46, 0.18);
+}
+
+.theme-card:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.theme-card__emoji {
+  font-size: clamp(32px, 8vw, 48px);
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+.theme-card__name {
+  font-family: var(--font-serif);
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: var(--fw-title);
+  letter-spacing: -0.3px;
+}
+
+.theme-card__count {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-meta);
+  color: var(--ink);
+  opacity: 0.75;
+  letter-spacing: 0.3px;
 }
 
 /* ===== Field Note Section ===== */

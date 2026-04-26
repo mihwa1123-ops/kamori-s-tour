@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import SpotPage from './pages/SpotPage';
 import RoutePage from './pages/RoutePage';
 import MapPage from './pages/MapPage';
+import ThemePage from './pages/ThemePage';
 import StoriesPage from './pages/StoriesPage';
 import AboutPage from './pages/AboutPage';
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/:lang/spot/:id" element={<SpotPage />} />
         <Route path="/:lang/route" element={<RoutePage />} />
         <Route path="/:lang/map" element={<MapPage />} />
+        <Route path="/:lang/theme/:theme" element={<ThemePage />} />
         <Route path="/:lang/stories" element={<StoriesPage />} />
         <Route path="/:lang/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/en" replace />} />
