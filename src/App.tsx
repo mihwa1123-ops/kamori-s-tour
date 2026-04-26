@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { ScrollToTop } from './components/utility/ScrollToTop';
+import { ScrollToTopButton } from './components/utility/ScrollToTopButton';
 import HomePage from './pages/HomePage';
 import SpotPage from './pages/SpotPage';
 import RoutePage from './pages/RoutePage';
@@ -17,6 +18,7 @@ export default function App() {
       }}
     >
       <ScrollToTop />
+      <ScrollToTopButton />
       <Routes>
         <Route path="/" element={<Navigate to="/en" replace />} />
         <Route path="/:lang" element={<HomePage />} />

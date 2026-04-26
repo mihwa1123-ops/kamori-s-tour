@@ -1,0 +1,53 @@
+.scroll-top-btn {
+  position: fixed;
+  /* BottomTabBar(56px + safe-area) 위로 12px 띄움 */
+  bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 12px);
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  z-index: var(--z-sticky);
+  box-shadow: 0 4px 16px rgba(26, 26, 46, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s, opacity 0.2s;
+  animation: scroll-top-fade-in 0.2s ease-out;
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-2px);
+}
+
+.scroll-top-btn:focus-visible {
+  outline: 3px solid var(--lav-500);
+  outline-offset: 3px;
+}
+
+.scroll-top-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes scroll-top-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* PC 에서는 숨김 (헤더에 Home 메뉴 있음) */
+@media (min-width: 1024px) {
+  .scroll-top-btn {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top-btn {
+    animation: none;
+    transition: none;
+  }
+}

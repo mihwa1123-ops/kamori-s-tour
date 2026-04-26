@@ -89,10 +89,12 @@ html[lang='zh-CN'] .kv__title em {
 
 .kv__visual {
   margin-top: var(--space-6);
-  /* 모바일: PC 와 동일한 비대칭 absolute 패턴, 비례 축소.
+  /* 모바일·태블릿: PC 와 동일한 비대칭 absolute 패턴, 비례 축소.
      두 블롭이 대각선 교차하면서 약 40% 시각 겹침. */
   position: relative;
-  height: clamp(380px, 50vh, 440px);
+  /* 중간 사이즈(540~1023)에서 heritage 블롭이 잘리지 않도록 충분한 높이 확보.
+     수식: top:38% + 260(max-blob) ≤ H → H ≥ 420 */
+  height: clamp(440px, 60vh, 520px);
 }
 
 .kv__blob {
@@ -104,6 +106,8 @@ html[lang='zh-CN'] .kv__title em {
   top: 4%;
   right: 0;
   width: 70%;
+  /* 태블릿(540+)에서 너무 크지 않게 캡 */
+  max-width: 320px;
   z-index: 2;
 }
 
@@ -112,6 +116,7 @@ html[lang='zh-CN'] .kv__title em {
   top: 38%;
   left: 0;
   width: 55%;
+  max-width: 260px;
   z-index: 1;
 }
 
