@@ -1,0 +1,53 @@
+.bookmark-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 0;
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+  backdrop-filter: blur(6px);
+}
+
+.bookmark-btn--sm {
+  width: 32px;
+  height: 32px;
+}
+.bookmark-btn--sm svg {
+  width: 16px;
+  height: 16px;
+}
+
+.bookmark-btn--md {
+  width: 40px;
+  height: 40px;
+}
+.bookmark-btn--md svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bookmark-btn:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+
+.bookmark-btn:focus-visible {
+  outline: 3px solid var(--lav-500);
+  outline-offset: 2px;
+}
+
+.bookmark-btn.is-saved {
+  background: var(--ink);
+  color: var(--lav-500);
+  border-color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bookmark-btn {
+    transition: none;
+  }
+}

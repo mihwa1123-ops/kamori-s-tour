@@ -62,21 +62,24 @@ export default function ThemePage() {
           <ul className="theme-page__list">
             {items.map((item) => (
               <li key={item.id} className="theme-page__item">
-                <span
-                  className="theme-page__item-emoji"
-                  style={{ background: meta.color }}
-                  aria-hidden="true"
-                >
-                  {meta.emoji}
-                </span>
-                <div className="theme-page__item-info">
-                  <strong>{item.nameKo}</strong>
-                  <span className="theme-page__item-eng">{item.name}</span>
-                  {item.menu && (
-                    <span className="theme-page__item-menu">{item.menu}</span>
-                  )}
-                  <span className="theme-page__item-addr">{item.address}</span>
-                </div>
+                <Link to={`/${lang}/spot/${item.id}`} className="theme-page__item-link">
+                  <span
+                    className="theme-page__item-emoji"
+                    style={{ background: meta.color }}
+                    aria-hidden="true"
+                  >
+                    {meta.emoji}
+                  </span>
+                  <div className="theme-page__item-info">
+                    <strong>{item.nameKo}</strong>
+                    <span className="theme-page__item-eng">{item.name}</span>
+                    {item.menu && (
+                      <span className="theme-page__item-menu">{item.menu}</span>
+                    )}
+                    <span className="theme-page__item-addr">{item.address}</span>
+                  </div>
+                  <span className="theme-page__item-arrow" aria-hidden="true">→</span>
+                </Link>
               </li>
             ))}
           </ul>

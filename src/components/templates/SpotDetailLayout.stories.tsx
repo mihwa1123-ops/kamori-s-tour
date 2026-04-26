@@ -17,6 +17,17 @@ const meta: Meta<typeof SpotDetailLayout> = {
   argTypes: {
     locale: { control: 'radio', options: ['en', 'ja', 'ko', 'es', 'zh'] },
   },
+  args: {
+    spot: {
+      id: 'soje-dong',
+      name: 'Soje-dong',
+      shape: 'heritage',
+      walkTime: 5,
+      isFree: true,
+      badge: { label: 'heritage', color: '#A594F9' },
+      description: '120년 된 철도 마을의 골목 사이에 카페와 공방이 자리 잡고 있어요.',
+    },
+  },
 };
 
 export default meta;
@@ -49,11 +60,12 @@ export const MarketSpot: Story = {
   args: {
     locale: 'en',
     spot: {
+      id: 'jungang',
       name: 'Jungang Market',
-      category: 'market',
       shape: 'market',
-      imageSrc: 'https://placehold.co/800x800/FFB3C6/1A1A2E?text=Jungang',
-      imageAlt: '중앙시장',
+      walkTime: 8,
+      isFree: true,
+      badge: { label: 'market', color: '#FFB3C6' },
     },
   },
   globals: { locale: 'en' },
@@ -63,11 +75,12 @@ export const NatureSpot: Story = {
   args: {
     locale: 'en',
     spot: {
+      id: 'bomunsan',
       name: 'Bomunsan',
-      category: 'nature',
       shape: 'nature',
-      imageSrc: 'https://placehold.co/800x800/FFE663/1A1A2E?text=Bomunsan',
-      imageAlt: '보문산',
+      walkTime: 20,
+      isFree: true,
+      badge: { label: 'nature', color: '#FFE663' },
     },
   },
   globals: { locale: 'en' },

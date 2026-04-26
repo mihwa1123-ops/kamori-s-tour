@@ -313,13 +313,36 @@ html[lang='zh-CN'] .simple-page__subtitle {
 }
 
 .theme-page__item {
+  background: var(--white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.theme-page__item:hover {
+  border-color: var(--ink);
+  box-shadow: 0 4px 16px rgba(26, 26, 46, 0.08);
+}
+
+.theme-page__item-link {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
   padding: var(--space-4);
-  background: var(--white);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.theme-page__item-arrow {
+  align-self: center;
+  font-size: var(--fs-h6);
+  color: var(--slate);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.15s, color 0.15s;
+}
+.theme-page__item:hover .theme-page__item-arrow {
+  color: var(--ink);
+  transform: translateX(2px);
 }
 
 .theme-page__item-emoji {
