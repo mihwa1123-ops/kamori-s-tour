@@ -1,7 +1,6 @@
 import { Header } from '../organisms/Header';
 import { SpotCard } from '../organisms/SpotCard';
 import { CourseBuilder } from '../organisms/CourseBuilder';
-import { RouteTimeline, type RouteSpot } from '../organisms/RouteTimeline';
 import { BottomTabBar } from '../organisms/BottomTabBar';
 import { BlobMask } from '../molecules/BlobMask';
 import { Button } from '../atoms/Button';
@@ -80,45 +79,6 @@ const KV_CONTENT: Record<
   },
 };
 
-const ROUTE_SPOTS: RouteSpot[] = [
-  { id: 'soje', number: 1, name: 'Soje-dong', category: 'heritage' },
-  {
-    id: 'jungang',
-    number: 2,
-    name: 'Jungang Market',
-    category: 'market',
-    walkTimeFromPrev: 5,
-  },
-  {
-    id: 'pungmi',
-    number: 3,
-    name: 'Pungmi Pavilion',
-    category: 'story',
-    walkTimeFromPrev: 8,
-  },
-  {
-    id: 'kalguksu',
-    number: 4,
-    name: 'Kalguksu Alley',
-    category: 'food',
-    walkTimeFromPrev: 4,
-  },
-  {
-    id: 'eunhaeng',
-    number: 5,
-    name: 'Eunhaeng Alley',
-    category: 'alleys',
-    walkTimeFromPrev: 6,
-  },
-  {
-    id: 'bomunsan',
-    number: 6,
-    name: 'Bomunsan',
-    category: 'nature',
-    walkTimeFromPrev: 12,
-  },
-];
-
 export interface HomeLayoutProps {
   locale?: Lang;
   onSpotClick?: (spotId: string) => void;
@@ -194,12 +154,6 @@ export function HomeLayout({ locale = 'en', onSpotClick }: HomeLayoutProps) {
           </div>
         </section>
 
-        {/* ===== Route Preview ===== */}
-        <section className="route-preview">
-          <div className="container">
-            <RouteTimeline spots={ROUTE_SPOTS} variant="horizontal" />
-          </div>
-        </section>
       </main>
 
       <footer className="home-layout__footer">

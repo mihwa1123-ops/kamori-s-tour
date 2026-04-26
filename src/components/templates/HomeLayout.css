@@ -88,31 +88,29 @@ html[lang='zh-CN'] .kv__title em {
 
 .kv__visual {
   margin-top: var(--space-6);
-  /* 모바일: 비대칭 2 블롭 grid (PC 의 absolute 비대칭 분위기 유지하되 클리핑 ❌) */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  column-gap: var(--space-2);
-  row-gap: var(--space-3);
+  /* 모바일: PC 와 동일한 비대칭 absolute 패턴, 비례 축소.
+     두 블롭이 대각선 교차하면서 약 40% 시각 겹침. */
+  position: relative;
+  height: clamp(380px, 50vh, 440px);
 }
 
 .kv__blob {
-  width: 100%;
+  position: absolute;
 }
 
 .kv__blob--nature {
-  grid-column: 2;
-  grid-row: 1;
+  /* 우측 상단 큰 블롭 */
+  top: 4%;
+  right: 0;
+  width: 70%;
   z-index: 2;
 }
 
 .kv__blob--heritage {
-  grid-column: 1;
-  grid-row: 2;
-  width: 80%;
-  margin-top: -16%;
-  margin-left: auto;
-  margin-right: auto;
+  /* 좌측 하단 작은 블롭 — 우상단과 위로 38% 지점에서 시작해 깊게 겹침 */
+  top: 38%;
+  left: 0;
+  width: 55%;
   z-index: 1;
 }
 
@@ -246,17 +244,6 @@ html[lang='zh-CN'] .kv__title em {
 
 @media (min-width: 1024px) {
   .field-note-section {
-    padding: var(--space-9) 0;
-  }
-}
-
-/* ===== Route Preview ===== */
-.route-preview {
-  padding: var(--space-7) 0;
-}
-
-@media (min-width: 1024px) {
-  .route-preview {
     padding: var(--space-9) 0;
   }
 }
