@@ -5,6 +5,7 @@ import { BottomTabBar } from '../components/organisms/BottomTabBar';
 import { Badge } from '../components/atoms/Badge';
 import { Button } from '../components/atoms/Button';
 import { isValidLang, SPOTS } from '../data/spots';
+import { ATTRACTIONS_BY_ID, distanceKm, walkMinutes, THEME_META } from '../data/attractions';
 import { loadSavedCourses, type SavedCourse } from '../components/organisms/CourseBuilder';
 import { useSyncHtmlLang } from '../hooks/useSyncHtmlLang';
 import './SimplePage.css';
@@ -101,9 +102,18 @@ export default function RoutePage() {
           ) : (
             <ul className="route-page__list">
               {courses.map((c) => {
-                const total = c.spotIds
-                  .map((id, i) => (i === 0 ? 0 : SPOTS[id]?.walkTime ?? 0))
-                  .reduce((a, b) => a + b, 0);
+                /* 새 코스(ATTRACTIONS) 우선 → 옛 코스(SPOTS) 폴백 */
+                const resolved = c.spotIds.map((id) => ATTRACTIONS_BY_ID[id] ?? SPOTS[id] ?? null);
+                let total = 0;
+                for (let i = 1; i < resolved.length; i++) {
+                  const prev = resolved[i - 1];
+                  const cur = resolved[i];
+                  if (prev && cur && 'lat' in prev && 'lat' in cur) {
+                    total += walkMinutes(distanceKm(prev as { lat: number; lng: number }, cur as { lat: number; lng: number }));
+                  } else if (cur && 'walkTime' in cur && typeof cur.walkTime === 'number') {
+                    total += cur.walkTime;
+                  }
+                }
                 return (
                   <li key={c.id} className="route-page__course">
                     <div className="route-page__course-meta">
@@ -113,6 +123,21 @@ export default function RoutePage() {
                     </div>
                     <ol className="route-page__spots">
                       {c.spotIds.map((id) => {
+                        const attr = ATTRACTIONS_BY_ID[id];
+                        if (attr) {
+                          return (
+                            <li key={id}>
+                              <span
+                                className="route-page__theme-dot"
+                                style={{ background: THEME_META[attr.theme].color }}
+                                aria-hidden="true"
+                              >
+                                {THEME_META[attr.theme].emoji}
+                              </span>
+                              <span>{attr.nameKo}</span>
+                            </li>
+                          );
+                        }
                         const spot = SPOTS[id];
                         if (!spot) return null;
                         return (

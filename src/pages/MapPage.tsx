@@ -1,16 +1,17 @@
 import { useParams, Navigate } from 'react-router-dom';
 import { Header } from '../components/organisms/Header';
 import { BottomTabBar } from '../components/organisms/BottomTabBar';
-import { isValidLang, SPOT_LIST } from '../data/spots';
+import { CourseBuilder, type Lang } from '../components/organisms/CourseBuilder';
+import { isValidLang } from '../data/spots';
 import { useSyncHtmlLang } from '../hooks/useSyncHtmlLang';
 import './SimplePage.css';
 
-const COPY: Record<string, { title: string; subtitle: string; comingSoon: string }> = {
-  en: { title: 'Daejeon Map', subtitle: 'All 6 stops on the slow walk.', comingSoon: 'Naver Map integration coming soon.' },
-  ja: { title: '大田マップ', subtitle: 'スローウォークの6スポット', comingSoon: 'Naverマップ統合は準備中。' },
-  ko: { title: '대전 지도', subtitle: '슬로우 워크 6 스팟 전체.', comingSoon: '네이버 지도 통합은 준비 중이에요.' },
-  es: { title: 'Mapa de Daejeon', subtitle: 'Las 6 paradas del paseo lento.', comingSoon: 'Integración de Naver Map próximamente.' },
-  zh: { title: '大田地图', subtitle: '慢行漫步的6个景点。', comingSoon: 'Naver地图整合即将推出。' },
+const COPY: Record<string, { title: string; subtitle: string }> = {
+  en: { title: 'Daejeon Junggu Map', subtitle: 'Pick a theme, build your tour.' },
+  ja: { title: '大田中区マップ',     subtitle: 'テーマを選び、ツアーを構築。' },
+  ko: { title: '대전 중구 지도',      subtitle: '테마를 골라 투어를 만들어보세요.' },
+  es: { title: 'Mapa de Junggu',     subtitle: 'Elige un tema y arma tu tour.' },
+  zh: { title: '中区地图',           subtitle: '选择主题，构建您的旅程。' },
 };
 
 export default function MapPage() {
@@ -28,32 +29,7 @@ export default function MapPage() {
         <div className="container">
           <h1 className="simple-page__title">{t.title}</h1>
           <p className="simple-page__subtitle">{t.subtitle}</p>
-
-          <div className="map-page__placeholder" aria-label="Map placeholder">
-            <div className="map-page__pins">
-              {SPOT_LIST.map((s) => {
-                const colorMap: Record<string, string> = {
-                  heritage: '#A594F9',
-                  market: '#FFB3C6',
-                  food: '#FFE663',
-                  story: '#D4CBF7',
-                  alleys: '#FFD6E0',
-                  nature: '#FFE663',
-                };
-                return (
-                  <div
-                    key={s.id}
-                    className="map-page__pin"
-                    style={{ background: colorMap[s.category] }}
-                    title={s.name}
-                  >
-                    {s.name}
-                  </div>
-                );
-              })}
-            </div>
-            <p className="map-page__caption">{t.comingSoon}</p>
-          </div>
+          <CourseBuilder locale={lang as Lang} initialTheme="sight" />
         </div>
       </main>
       <BottomTabBar />
