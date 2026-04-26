@@ -186,7 +186,8 @@ html[lang='zh-CN'] .kv__title em {
 
 /* ===== Pick a Theme Section ===== */
 .pick-theme {
-  padding: var(--space-7) 0;
+  /* bottom 0: CourseBuilder 와의 간격은 .field-note-section padding-top 으로 제어 */
+  padding: var(--space-7) 0 0 0;
 }
 
 .pick-theme__header {
@@ -232,7 +233,7 @@ html[lang='zh-CN'] .kv__title em {
 /* 태블릿/PC: 일반 4컬럼 그리드 (스와이프 X) */
 @media (min-width: 768px) {
   .pick-theme {
-    padding: var(--space-8) 0;
+    padding: var(--space-8) 0 0 0;
   }
   .pick-theme__rail {
     grid-auto-flow: row;
@@ -251,7 +252,7 @@ html[lang='zh-CN'] .kv__title em {
 
 @media (min-width: 1024px) {
   .pick-theme {
-    padding: var(--space-9) 0;
+    padding: var(--space-9) 0 0 0;
   }
   .pick-theme__rail {
     gap: var(--space-7);
@@ -326,12 +327,14 @@ html[lang='zh-CN'] .kv__title em {
 
 /* ===== Field Note Section ===== */
 .field-note-section {
-  padding: var(--space-7) 0;
+  /* Pick-theme 와의 간격을 10px 로 줄이기 위해 top 패딩 축소.
+     bottom 은 footer 와의 호흡을 위해 기존대로 유지. */
+  padding: 10px 0 var(--space-7) 0;
 }
 
 @media (min-width: 1024px) {
   .field-note-section {
-    padding: var(--space-9) 0;
+    padding: 52px 0 var(--space-9) 0;
   }
 }
 

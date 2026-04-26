@@ -44,10 +44,6 @@ export default function ThemePage() {
       <Header variant="solid" />
       <main className="simple-page__main">
         <div className="container">
-          <Link to={`/${lang}`} className="theme-page__back">
-            {t.back}
-          </Link>
-
           <header className="theme-page__header">
             <span
               className="theme-page__chip"
@@ -85,9 +81,14 @@ export default function ThemePage() {
             ))}
           </ul>
 
-          <Link to={`/${lang}/map`} className="theme-page__cta">
-            {t.openMap}
-          </Link>
+          <div className="theme-page__footer-actions">
+            <Link to={`/${lang}`} className="theme-page__back">
+              {t.back}
+            </Link>
+            <Link to={`/${lang}/map`} className="theme-page__cta">
+              {t.openMap}
+            </Link>
+          </div>
         </div>
       </main>
       <BottomTabBar />

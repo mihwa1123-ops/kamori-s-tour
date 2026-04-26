@@ -258,13 +258,15 @@ html[lang='zh-CN'] .simple-page__subtitle {
 
 /* ===== Theme Page ===== */
 .theme-page__back {
-  display: inline-block;
-  margin-bottom: var(--space-3);
   font-size: var(--fs-sub);
   color: var(--slate);
   text-decoration: none;
+  padding: var(--space-2) var(--space-3);
+  border-radius: 999px;
+  transition: background 0.15s, color 0.15s;
 }
 .theme-page__back:hover {
+  background: var(--silver-veil);
   color: var(--ink);
 }
 
@@ -363,8 +365,6 @@ html[lang='zh-CN'] .simple-page__subtitle {
 }
 
 .theme-page__cta {
-  display: inline-block;
-  margin-top: var(--space-3);
   padding: var(--space-3) var(--space-5);
   background: var(--lav-500);
   color: var(--ink);
@@ -376,4 +376,16 @@ html[lang='zh-CN'] .simple-page__subtitle {
 }
 .theme-page__cta:hover {
   background: var(--lav-600);
+}
+
+/* 푸터 액션: [← Back] [Build a tour →] 정렬 */
+.theme-page__footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-subtle);
+  flex-wrap: wrap;
 }
