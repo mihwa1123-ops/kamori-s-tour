@@ -34,13 +34,18 @@ export function Header({ variant = 'transparent' }: HeaderProps) {
   return (
     <header className={`header header--${effectiveVariant}`}>
       <div className="header__inner">
-        <Link
-          to={`/${lang}`}
-          className="header__logo"
-          aria-label="Kamori Connect 홈"
-        >
-          <img src="/logo.svg" alt="Kamori Connect" className="header__logo-img" />
-        </Link>
+        <div className="header__brand">
+          <div className="header__lang">
+            <LanguageSwitcher />
+          </div>
+          <Link
+            to={`/${lang}`}
+            className="header__logo"
+            aria-label="Kamori Connect 홈"
+          >
+            <img src="/logo.svg" alt="Kamori Connect" className="header__logo-img" />
+          </Link>
+        </div>
 
         <nav className="header__nav" aria-label="메인">
           <Link to={`/${lang}`}>Home</Link>
@@ -49,10 +54,6 @@ export function Header({ variant = 'transparent' }: HeaderProps) {
           <Link to={`/${lang}/stories`}>Stories</Link>
           <Link to={`/${lang}/about`}>About</Link>
         </nav>
-
-        <div className="header__lang">
-          <LanguageSwitcher />
-        </div>
       </div>
     </header>
   );
