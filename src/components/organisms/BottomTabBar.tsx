@@ -31,27 +31,20 @@ const StoriesIcon = () => (
   </svg>
 );
 
-const AboutIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <circle cx="12" cy="12" r="9" />
-    <path d="M12 8v.01M12 11v5" />
-  </svg>
-);
-
 interface TabLabels {
   home: string;
   route: string;
   map: string;
   stories: string;
-  about: string;
 }
 
+/* About 은 햄버거 메뉴로 이동, BottomTabBar 는 메인 4 탭만 유지 */
 const LABELS: Record<string, TabLabels> = {
-  en: { home: 'Home', route: 'Route', map: 'Map', stories: 'Stories', about: 'About' },
-  ja: { home: 'ホーム', route: 'ルート', map: 'マップ', stories: 'ストーリー', about: 'About' },
-  ko: { home: '홈', route: '루트', map: '지도', stories: '스토리', about: 'About' },
-  es: { home: 'Inicio', route: 'Ruta', map: 'Mapa', stories: 'Historias', about: 'Acerca' },
-  zh: { home: '首页', route: '路线', map: '地图', stories: '故事', about: '关于' },
+  en: { home: 'Home', route: 'Route', map: 'Map', stories: 'Stories' },
+  ja: { home: 'ホーム', route: 'ルート', map: 'マップ', stories: 'ストーリー' },
+  ko: { home: '홈', route: '루트', map: '지도', stories: '스토리' },
+  es: { home: 'Inicio', route: 'Ruta', map: 'Mapa', stories: 'Historias' },
+  zh: { home: '首页', route: '路线', map: '地图', stories: '故事' },
 };
 
 export function BottomTabBar() {
@@ -65,7 +58,6 @@ export function BottomTabBar() {
     { key: 'route',   path: '/route',   icon: RouteIcon },
     { key: 'map',     path: '/map',     icon: MapIcon },
     { key: 'stories', path: '/stories', icon: StoriesIcon },
-    { key: 'about',   path: '/about',   icon: AboutIcon },
   ];
 
   const isActive = (path: string) => {

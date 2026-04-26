@@ -41,13 +41,6 @@
   }
 }
 
-/* ----- Brand group: [LanguageSwitcher] [Logo] (좌측 묶음) ----- */
-.header__brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-}
-
 /* ----- Logo ----- */
 .header__logo {
   display: flex;
@@ -93,6 +86,29 @@
 
 @media (min-width: 1024px) {
   .header__nav {
+    display: flex;
+  }
+}
+
+/* ----- Settings cluster: [Language] [About] — PC only ----- */
+.header__settings {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.header__about-link {
+  font-size: 16px;
+  color: var(--slate);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.header__about-link:hover {
+  color: var(--ink);
+}
+
+@media (min-width: 1024px) {
+  .header__settings {
     display: flex;
   }
 }

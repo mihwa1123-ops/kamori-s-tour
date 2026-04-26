@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { LanguageSwitcher } from '../molecules/LanguageSwitcher';
+import { HamburgerMenu } from '../molecules/HamburgerMenu';
 import { isValidLang } from '../../data/spots';
 import './Header.css';
 
@@ -34,26 +35,32 @@ export function Header({ variant = 'transparent' }: HeaderProps) {
   return (
     <header className={`header header--${effectiveVariant}`}>
       <div className="header__inner">
-        <div className="header__brand">
-          <div className="header__lang">
-            <LanguageSwitcher />
-          </div>
-          <Link
-            to={`/${lang}`}
-            className="header__logo"
-            aria-label="Kamori Connect 홈"
-          >
-            <img src="/logo.svg" alt="Kamori Connect" className="header__logo-img" />
-          </Link>
-        </div>
+        <Link
+          to={`/${lang}`}
+          className="header__logo"
+          aria-label="Kamori Connect 홈"
+        >
+          <img src="/logo.svg" alt="Kamori Connect" className="header__logo-img" />
+        </Link>
 
+        {/* PC nav (모바일에서는 BottomTabBar 가 담당, About 은 햄버거로 이동) */}
         <nav className="header__nav" aria-label="메인">
           <Link to={`/${lang}`}>Home</Link>
           <Link to={`/${lang}/route`}>Route</Link>
           <Link to={`/${lang}/map`}>Map</Link>
           <Link to={`/${lang}/stories`}>Stories</Link>
-          <Link to={`/${lang}/about`}>About</Link>
         </nav>
+
+        {/* PC: Language + About 우측 클러스터 (About 가 마지막) */}
+        <div className="header__settings">
+          <LanguageSwitcher />
+          <Link to={`/${lang}/about`} className="header__about-link">
+            About
+          </Link>
+        </div>
+
+        {/* Mobile: 햄버거 메뉴 (Language + About 내부) */}
+        <HamburgerMenu lang={lang} />
       </div>
     </header>
   );

@@ -5,7 +5,7 @@
   right: 0;
   z-index: var(--z-sticky);
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   background: var(--white);
   border-top: 0.5px solid var(--color-border-subtle);
   /* iOS safe area */

@@ -1,0 +1,111 @@
+.hamburger {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger__btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.hamburger__btn:hover {
+  background: var(--silver-veil);
+}
+.hamburger__btn:focus-visible {
+  outline: 3px solid var(--lav-500);
+  outline-offset: 2px;
+}
+.hamburger__btn span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* X 모양 변환 */
+.hamburger__btn.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.hamburger__btn.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger__btn.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.hamburger__drawer {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--white);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 16px;
+  padding: var(--space-3);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  z-index: var(--z-modal);
+  animation: hamburger-fade-in 0.15s ease-out;
+}
+
+.hamburger__section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hamburger__section-label {
+  font-size: var(--fs-caption);
+  color: var(--slate);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: var(--fw-ui);
+}
+
+.hamburger__link {
+  display: block;
+  padding: 10px 12px;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: var(--fs-sub);
+  font-weight: var(--fw-ui);
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.hamburger__link:hover {
+  background: var(--silver-veil);
+}
+
+@keyframes hamburger-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* PC 에서는 Hamburger 자체를 숨김 (Header 의 Language+About 클러스터가 보임) */
+@media (min-width: 1024px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hamburger__btn span,
+  .hamburger__drawer {
+    transition: none;
+    animation: none;
+  }
+}
