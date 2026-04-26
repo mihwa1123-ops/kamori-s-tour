@@ -43,6 +43,7 @@ export function Header({ variant = 'transparent' }: HeaderProps) {
         </Link>
 
         <nav className="header__nav" aria-label="메인">
+          <Link to={`/${lang}`}>Home</Link>
           <Link to={`/${lang}/route`}>Route</Link>
           <Link to={`/${lang}/map`}>Map</Link>
           <Link to={`/${lang}/stories`}>Stories</Link>

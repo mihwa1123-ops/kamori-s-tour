@@ -49,7 +49,7 @@ interface TabLabels {
 const LABELS: Record<string, TabLabels> = {
   en: { home: 'Home', route: 'Route', map: 'Map', stories: 'Stories', about: 'About' },
   ja: { home: 'ホーム', route: 'ルート', map: 'マップ', stories: 'ストーリー', about: 'About' },
-  ko: { home: '홈', route: '루트', map: '지도', stories: '스토리', about: '소개' },
+  ko: { home: '홈', route: '루트', map: '지도', stories: '스토리', about: 'About' },
   es: { home: 'Inicio', route: 'Ruta', map: 'Mapa', stories: 'Historias', about: 'Acerca' },
   zh: { home: '首页', route: '路线', map: '地图', stories: '故事', about: '关于' },
 };

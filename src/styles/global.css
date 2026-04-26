@@ -45,6 +45,14 @@ body {
      html[lang="ja"] 등 언어별 분기가 자연스럽게 적용 */
 }
 
+/* 모바일: 하단 고정 BottomTabBar(56px + iOS safe-area) 가
+   푸터·컨텐츠를 가리지 않도록 body 하단에 여백 확보. */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 img,
 picture,
 video,
