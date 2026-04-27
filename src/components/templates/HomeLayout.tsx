@@ -15,6 +15,14 @@ const THEME_SHAPE: Record<Theme, BlobShape> = {
   food:    'heritage',  // 모임·공동체 (역사와 같은 H, 컬러로 구분)
 };
 
+/** 테마 → 대표 spot id (홈 카드 클릭 시 상세 페이지로 직링크) */
+const THEME_DEFAULT_SPOT: Record<Theme, string> = {
+  sight:   'oworld',
+  history: 'shin-chaeho',
+  nature:  'bomunsan',
+  food:    'choryang',
+};
+
 export type Lang = 'en' | 'ja' | 'ko' | 'es' | 'zh';
 
 const KV_CONTENT: Record<
@@ -176,7 +184,7 @@ export function HomeLayout({ locale = 'en' }: HomeLayoutProps) {
                 return (
                   <Link
                     key={th}
-                    to={`/${locale}/theme/${th}`}
+                    to={`/${locale}/spot/${THEME_DEFAULT_SPOT[th]}`}
                     className="theme-card"
                     style={{ '--theme-color': meta.color } as React.CSSProperties}
                   >

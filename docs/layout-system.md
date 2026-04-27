@@ -344,6 +344,31 @@ export function BlobMask({ shape, src, alt, className = '' }: BlobMaskProps) {
 - PC 일반: `var(--space-9)` = 96px
 - PC Anti-Grid: `var(--space-10)` = 128px
 
+### 4.6 컨테이너 패딩 · 라운드 토큰
+
+8pt 시스템에서 벗어나는 모바일 컨테이너 패딩(20px)과 카드 라운드 값을 별도 토큰으로 정의한다. 하드코딩 금지.
+
+```css
+:root {
+  /* 컨테이너 좌우 패딩 — 뷰포트별 (4.2 .container 와 페어) */
+  --container-pad-mobile:  20px;  /* 한 손 그립 시 엄지 가독 영역 */
+  --container-pad-tablet:  32px;
+  --container-pad-desktop: 40px;
+
+  /* 카드 라운드 — 사이즈별 (큰 컨테이너일수록 큰 라운드) */
+  --radius-sm:   12px;   /* 칩, 작은 버튼, 인라인 요소 */
+  --radius-md:   16px;   /* 사진 카드, 카드 안 이미지 */
+  --radius-lg:   24px;   /* 섹션 카드, 캐러셀 슬라이드 */
+  --radius-pill: 999px;  /* 알약형 칩, CTA */
+}
+```
+
+**사용 가이드**:
+- 카드 안 패딩 = `var(--space-4)` (16px)
+- 캐러셀/스와이프 카드 간격 = `var(--space-4)` (16px)
+- 섹션 카드 외곽 라운드 = `var(--radius-lg)` (24px)
+- 사진/이미지 라운드 = `var(--radius-md)` (16px)
+
 ---
 
 ## 5. KV (Key Visual) 섹션

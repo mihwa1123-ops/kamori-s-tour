@@ -96,15 +96,19 @@ export function SpotDetailLayout({ locale = 'en', spot }: SpotDetailLayoutProps)
 
           {/* ===== Hero ===== */}
           <section className="spot-detail__hero">
-            <div className="spot-detail__hero-photos" aria-label={t.sectionBest3}>
+            <div className="spot-detail__hero-photos">
               <span className="spot-detail__photos-label">{t.sectionBest3}</span>
-              <div className="spot-detail__photos-stack">
+              <div
+                className="spot-detail__photos-carousel"
+                aria-label={t.sectionBest3}
+              >
                 {heroPhotos.map((src, i) => (
-                  <figure
-                    key={i}
-                    className={`spot-detail__photo spot-detail__photo--${i + 1}`}
-                  >
-                    <img src={src} alt={`${spot.name} ${i + 1}`} loading="eager" />
+                  <figure key={i} className="spot-detail__photo">
+                    <img
+                      src={src}
+                      alt={`${spot.name} ${i + 1}`}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                    />
                     <figcaption>
                       <strong>{spot.nameKo ?? spot.name}</strong>
                       <span>사진 {String(i + 1).padStart(2, '0')}</span>

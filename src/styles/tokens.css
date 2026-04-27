@@ -140,6 +140,19 @@
   --space-9:  96px;
   --space-10: 128px;
 
+  /* ========== Layout · Container Padding (layout-system §4.2) ==========
+     모바일은 8pt 시스템에서 벗어나는 20px (한 손 그립 시 엄지 가독 영역) */
+  --container-pad-mobile:  20px;
+  --container-pad-tablet:  32px;
+  --container-pad-desktop: 40px;
+
+  /* ========== Layout · Radius (layout-system §4.6) ==========
+     카드 사이즈별 라운드 — 큰 컨테이너일수록 큰 라운드 */
+  --radius-sm:   12px;  /* 칩, 작은 버튼, 인라인 요소 */
+  --radius-md:   16px;  /* 사진 카드, 카드 안 이미지 */
+  --radius-lg:   24px;  /* 섹션 카드, 캐러셀 슬라이드 */
+  --radius-pill: 999px; /* 알약형 칩, CTA */
+
   /* ========== Layout · Z-Index (layout-system §10) ==========
      순서 (낮음 → 높음): 컨텐츠 < 하단 고정 UI < 헤더 < 팝업/다이얼로그 */
   --z-base:     0;     /* 페이지 컨텐츠 */
