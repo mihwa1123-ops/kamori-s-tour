@@ -25,9 +25,11 @@
 
 /* ===== KV Section (Anti-Grid Hero) ===== */
 .kv {
-  min-height: 90vh;
-  /* 모바일: 상하 20px (좌우 20px 유지) */
-  padding: 20px 20px;
+  /* 홈 기본폭 1280px 고정 — ultra-wide 에서도 layout 유지 */
+  max-width: 1280px;
+  margin: 0 auto;
+  /* 모바일: 좌우 20px */
+  padding: 20px;
   position: relative;
   overflow: hidden;
 }
@@ -92,9 +94,9 @@ html[lang='zh-CN'] .kv__title em {
   /* 모바일·태블릿: PC 와 동일한 비대칭 absolute 패턴, 비례 축소.
      두 블롭이 대각선 교차하면서 약 40% 시각 겹침. */
   position: relative;
-  /* 중간 사이즈(540~1023)에서 heritage 블롭이 잘리지 않도록 충분한 높이 확보.
+  /* vh 의존 제거 → 디바이스 세로폭과 무관하게 블롭 위치 고정.
      수식: top:38% + 260(max-blob) ≤ H → H ≥ 420 */
-  height: clamp(440px, 60vh, 520px);
+  height: 420px;
 }
 
 .kv__blob {
@@ -137,13 +139,23 @@ html[lang='zh-CN'] .kv__title em {
   z-index: var(--z-blob);
 }
 
+/* 태블릿(768~1023): stack 유지하되 좌우 padding · visual 높이 조정 */
+@media (min-width: 768px) {
+  .kv {
+    padding: 32px;
+  }
+  .kv__visual {
+    height: 480px;
+  }
+}
+
 /* PC: Anti-Grid 비대칭 absolute 배치 */
 @media (min-width: 1024px) {
   .kv {
     display: grid;
     grid-template-columns: 55% 45%;
     align-items: center;
-    padding: 40px 0;
+    padding: 40px;
   }
 
   .kv__title {
@@ -152,17 +164,18 @@ html[lang='zh-CN'] .kv__title em {
   }
 
   .kv__text {
-    padding-left: max(40px, calc((100vw - 1200px) / 2 + 40px));
+    /* .kv 가 1280 으로 캡 + padding 40 → padding-left 수식 불필요.
+       grid 컬럼 안에서 자연 정렬되며 max-width 520 으로 행폭만 제한. */
     max-width: 520px;
     margin: 0;
   }
 
   .kv__visual {
-    /* PC 는 grid 무시하고 absolute 위치 기반 */
+    /* PC 는 grid 무시하고 absolute 위치 기반.
+       vh 의존 제거 → 모든 PC 해상도에서 블롭 위치 일관. */
     display: block;
     position: relative;
-    height: 70vh;
-    min-height: 500px;
+    height: 560px;
     margin: 0;
   }
 
