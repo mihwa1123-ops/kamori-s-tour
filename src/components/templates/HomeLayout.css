@@ -9,7 +9,8 @@
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
-  max-width: 1360px;
+  /* 홈 기본폭 1280 — .kv 와 통일 */
+  max-width: 1280px;
 }
 
 @media (min-width: 768px) {
@@ -164,9 +165,8 @@ html[lang='zh-CN'] .kv__title em {
   }
 
   .kv__text {
-    /* .kv 가 1280 으로 캡 + padding 40 → padding-left 수식 불필요.
-       grid 컬럼 안에서 자연 정렬되며 max-width 520 으로 행폭만 제한. */
-    max-width: 520px;
+    /* PC: 텍스트가 grid 컬럼을 가득 채우도록 (한 줄에 한국어 9글자/영어 풀 카피 들어감) */
+    max-width: 720px;
     margin: 0;
   }
 
@@ -184,10 +184,11 @@ html[lang='zh-CN'] .kv__title em {
   }
 
   .kv__blob--nature {
-    top: 8%;
-    right: 5%;
-    width: 340px;
-    max-width: none;
+    top: 6%;
+    right: 0;
+    /* viewport 비례 + 1280 캡 환경에서 max-width 로 캡 → 1024~1280 구간 자연 축소 */
+    width: 75%;
+    max-width: 400px;
     grid-column: unset;
     grid-row: unset;
   }
@@ -195,10 +196,10 @@ html[lang='zh-CN'] .kv__title em {
   .kv__blob--heritage {
     grid-column: unset;
     grid-row: unset;
-    bottom: 12%;
-    left: 8%;
-    width: 240px;
-    max-width: none;
+    bottom: 8%;
+    left: 0;
+    width: 55%;
+    max-width: 280px;
     margin: 0;
   }
 }
